@@ -1,0 +1,31 @@
+---
+import { cn } from 'utils/twMerge'
+const { isMain, lang } = Astro.props
+
+const languages = [
+	{
+		language: 'español',
+		id: 'es',
+	},
+	{
+		language: 'english',
+		id: 'en',
+	},
+]
+---
+
+<div class={cn('flex gap-2 text-white', isMain ? 'z-40' : '')}>
+	{
+		languages.map(({ language, id }) => (
+			<button
+				class={cn(
+					lang === id ? 'font-bold' : 'font-light',
+					'cursor-pointer px-4 py-1  rounded-2xl',
+					isMain ? '' : 'bg-white/10'
+				)}
+			>
+				{language.toUpperCase()}
+			</button>
+		))
+	}
+</div>

@@ -1,0 +1,19 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import Header from '../../../components/organisms/Header.astro'
+
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
+
+export async function getStaticPaths() {
+	return [{ params: { languageId: 'es' } }, { params: { languageId: 'en' } }]
+}
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<Layout>
+	<div class='w-full max-w-screen-xl mx-auto p-24 mt-25'>
+		<img src='/images/schedule.png' alt='schedule' class='rounded-3xl' />
+	</div>
+</Layout>
