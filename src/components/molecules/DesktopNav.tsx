@@ -15,10 +15,10 @@ export default function Nav({ currentPath, lang, isMain }: NavProps) {
 
 	return (
 		<nav
-			className={cn(
-				'bg-white z-40 rounded-2xl px-4 py-1',
-				isMain ? ' bg-white/90' : 'bg-white/30'
-			)}
+		// className={cn(
+		// 	'bg-white z-40 rounded-2xl px-4 py-1',
+		// 	isMain ? ' bg-white/90' : 'bg-white/30'
+		// )}
 		>
 			<ul className='flex gap-5'>
 				{navItems.map((item, index) => (
@@ -29,7 +29,7 @@ export default function Nav({ currentPath, lang, isMain }: NavProps) {
 							currentPage === item.url ||
 								(currentPage === '' && item.title === 'nav.welcome')
 								? 'font-bold'
-								: 'font-normal'
+								: 'font-light'
 						)}
 					>
 						{item.url ? (

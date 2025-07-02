@@ -14,18 +14,18 @@ const languages = [
 ]
 ---
 
-<div class={cn('flex gap-2 text-white', isMain ? 'z-40' : '')}>
+<div class={cn('flex gap-2', isMain ? 'z-40' : '')}>
 	{
 		languages.map(({ language, id }) => (
-			<button
+			<a
 				class={cn(
 					lang === id ? 'font-bold' : 'font-light',
-					'cursor-pointer px-4 py-1  rounded-2xl',
-					isMain ? '' : 'bg-white/10'
+					'cursor-pointer px-4 py-1  rounded-2xl text-almost-black',
+					isMain ? 'bg-white/80' : ''
 				)}
 			>
 				{language.toUpperCase()}
-			</button>
+			</a>
 		))
 	}
 </div>
