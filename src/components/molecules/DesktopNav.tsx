@@ -28,8 +28,8 @@ export default function Nav({ currentPath, lang, isMain }: NavProps) {
 							'text-almost-black font-open-sans uppercase',
 							currentPage === item.url ||
 								(currentPage === '' && item.title === 'nav.welcome')
-								? 'font-bold'
-								: 'font-light'
+								? 'font-extrabold'
+								: 'font-medium'
 						)}
 					>
 						{item.url ? (

@@ -6,28 +6,41 @@ import LanguageNav from '../molecules/LanguageNav.astro'
 const { isMain } = Astro.props
 const lang = getLangFromUrl(Astro.url)
 const currentPath = Astro.url.pathname
+
+//flex items-center justify-end gap-10
 ---
 
 <header
 	class={cn(
-		isMain
-			? 'bg-custom-green/0'
-			: 'bg-linear-65 from-custom-green to-custom-blue',
-		'fixed h-25 top-0 left-0 w-full py-14 z-20 '
+		isMain ? 'bg-transparent' : 'bg-linear-65 from-custom-green to-custom-blue',
+		'fixed h-25 top-0 left-0 w-full z-20'
 	)}
 >
 	<div
-		class='flex justify-between items-center w-full h-full max-w-screen-2xl mx-auto'
+		class='flex justify-between items-center gap-6 w-full h-full max-w-screen-2xl mx-auto'
 	>
-		<a href={`/${lang}/`} '><img src='/images/logo3.svg' class='h-[75px]' /></a>
-		<div class='flex items-center justify-end gap-10'>
-			<LanguageNav isMain={isMain} lang={lang} />
-			<DesktopNav
-				client:load
-				currentPath={currentPath}
-				isMain={isMain}
-				lang={lang}
-			/>
+		<a href={`/${lang}/`} '
+			><img src='/images/logo3.svg' class='h-[75px] px-10' /></a
+		>
+		<div
+			class={cn(
+				'flex flex-col h-25 gap-2 items-end justify-center w-1/2',
+				isMain
+					? 'bg-linear-65 from-custom-green/0  via-custom-green/50 to-custom-blue/60'
+					: ''
+			)}
+		>
+			<div
+				class='flex flex-col h-28 gap-2 items-end justify-center w-1/2 px-10'
+			>
+				<DesktopNav
+					client:load
+					currentPath={currentPath}
+					isMain={isMain}
+					lang={lang}
+				/>
+				<LanguageNav isMain={isMain} lang={lang} />
+			</div>
 		</div>
 	</div>
 </header>

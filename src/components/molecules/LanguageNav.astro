@@ -4,28 +4,27 @@ const { isMain, lang } = Astro.props
 
 const languages = [
 	{
-		language: 'español',
+		language: 'ES',
 		id: 'es',
 	},
 	{
-		language: 'english',
+		language: 'EN',
 		id: 'en',
 	},
 ]
 ---
 
-<div class={cn('flex gap-2', isMain ? 'z-40' : '')}>
+<div class={cn('flex gap-3', isMain ? 'z-40' : '')}>
 	{
 		languages.map(({ language, id }) => (
-			<a
+			<button
 				class={cn(
-					lang === id ? 'font-bold' : 'font-light',
-					'cursor-pointer px-4 py-1  rounded-2xl text-almost-black',
-					isMain ? 'bg-white/80' : ''
+					lang === id ? 'font-extrabold' : 'font-light',
+					'cursor-pointer text-almost-black text-sm'
 				)}
 			>
 				{language.toUpperCase()}
-			</a>
+			</button>
 		))
 	}
 </div>
