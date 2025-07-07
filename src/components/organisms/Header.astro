@@ -1,6 +1,6 @@
 ---
 import { cn } from '../../../utils/twMerge'
-import DesktopNav from '../molecules/DesktopNav.tsx'
+import Navigation from '../molecules/Navigation.tsx'
 import { getLangFromUrl } from '../../i18n/utils'
 import LanguageNav from '../molecules/LanguageNav.astro'
 const { isMain } = Astro.props
@@ -16,31 +16,35 @@ const currentPath = Astro.url.pathname
 		'fixed h-25 top-0 left-0 w-full z-20'
 	)}
 >
+	{
+		isMain ? (
+			<div
+				id='left-overlay'
+				class='absolute top-0 left-0 w-1/3 h-25 bg-linear-65 from-custom-blue/60 via-custom-green/0 to-custom-green/0'
+			/>
+		) : null
+	}
+
+	{
+		isMain ? (
+			<div class='absolute top-0 right-0 w-1/3  bg-linear-65 from-custom-green/0  via-custom-green/50 to-custom-blue/60 h-25' />
+		) : null
+	}
 	<div
-		class='flex justify-between items-center gap-6 w-full h-full max-w-screen-2xl mx-auto'
+		class='flex justify-between items-center gap-6 w-full h-full max-w-screen-2xl mx-auto z-50 absolute top-0 left-1/2 -translate-x-1/2'
 	>
 		<a href={`/${lang}/`} '
-			><img src='/images/logo3.svg' class='h-[75px] px-10' /></a
+			><img src='/images/logo3.svg' class='h-[75px] px-10 z-50' /></a
 		>
-		<div
-			class={cn(
-				'flex flex-col h-25 gap-2 items-end justify-center w-1/2',
-				isMain
-					? 'bg-linear-65 from-custom-green/0  via-custom-green/50 to-custom-blue/60'
-					: ''
-			)}
-		>
-			<div
-				class='flex flex-col h-28 gap-2 items-end justify-center w-1/2 px-10'
-			>
-				<DesktopNav
-					client:load
-					currentPath={currentPath}
-					isMain={isMain}
-					lang={lang}
-				/>
-				<LanguageNav isMain={isMain} lang={lang} />
-			</div>
+
+		<div class='flex flex-col h-28 gap-2 items-end justify-center w-1/2 px-10'>
+			<Navigation
+				client:load
+				currentPath={currentPath}
+				isMain={isMain}
+				lang={lang}
+			/>
+			<LanguageNav isMain={isMain} lang={lang} />
 		</div>
 	</div>
 </header>

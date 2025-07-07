@@ -139,4 +139,7 @@
 	body {
 		@apply bg-background text-foreground;
 	}
+	.svg-logo {
+		fill: '#999999';
+	}
 }

@@ -14,12 +14,7 @@ export default function Nav({ currentPath, lang, isMain }: NavProps) {
 	const currentPage = currentPathSplitted[currentPathSplitted.length - 1]
 
 	return (
-		<nav
-		// className={cn(
-		// 	'bg-white z-40 rounded-2xl px-4 py-1',
-		// 	isMain ? ' bg-white/90' : 'bg-white/30'
-		// )}
-		>
+		<nav className='h-5'>
 			<ul className='flex gap-5'>
 				{navItems.map((item, index) => (
 					<li
@@ -28,7 +23,7 @@ export default function Nav({ currentPath, lang, isMain }: NavProps) {
 							'text-almost-black font-open-sans uppercase',
 							currentPage === item.url ||
 								(currentPage === '' && item.title === 'nav.welcome')
-								? 'font-extrabold'
+								? 'font-bold'
 								: 'font-medium'
 						)}
 					>

@@ -1,6 +1,11 @@
 ---
+import { getLangFromUrl } from '../../i18n/utils'
 const { isMain } = Astro.props
 import { cn } from 'utils/twMerge'
+import Navigation from '../molecules/Navigation.tsx'
+
+const lang = getLangFromUrl(Astro.url)
+const currentPath = Astro.url.pathname
 ---
 
 <footer
@@ -9,4 +14,7 @@ import { cn } from 'utils/twMerge'
 		'w-full h-10'
 	)}
 >
+	<div class='flex items-center h-full w-full max-w-screen-2xl mx-auto px-10'>
+		&copy; Dominik Frackowiak 2025
+	</div>
 </footer>
