@@ -1,8 +1,10 @@
 ---
 import { getLangFromUrl } from '../../i18n/utils'
+
 const { isMain } = Astro.props
 import { cn } from 'utils/twMerge'
 import Navigation from '../molecules/Navigation.tsx'
+import Envelope from '../atoms/Envelope'
 
 const lang = getLangFromUrl(Astro.url)
 const currentPath = Astro.url.pathname
@@ -11,10 +13,14 @@ const currentPath = Astro.url.pathname
 <footer
 	class={cn(
 		isMain ? 'bg-linear-65 from-custom-green to-custom-blue' : 'bg-custom-blue',
-		'w-full h-10'
+		'flex items-center relative bottom-0 left-0 w-full px-10 h-12'
 	)}
 >
-	<div class='flex items-center h-full w-full max-w-screen-2xl mx-auto px-10'>
-		&copy; Dominik Frackowiak 2025
-	</div>
+	<Navigation
+		client:load
+		currentPath={currentPath}
+		isMain={isMain}
+		lang={lang}
+	/>
+	<Envelope client:load />
 </footer>

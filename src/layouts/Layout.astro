@@ -1,13 +1,17 @@
 ---
 import '../styles/global.css'
+import { cn } from 'utils/twMerge'
 import { ClientRouter } from 'astro:transitions'
 import Header from '../components/organisms/Header.astro'
 import Footer from '@/components/organisms/Footer.astro'
+import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
 const currentPath = Astro.url.pathname
 const pathSplitted = currentPath.split('/')
 const isMain = pathSplitted[pathSplitted.length - 1] === ''
 import { getLangFromUrl, useTranslations } from '../i18n/utils'
+import SectionTitle from '@/components/atoms/SectionTitle.astro'
 const lang = getLangFromUrl(Astro.url)
+const { title, heading } = Astro.props
 ---
 
 <!doctype html>
@@ -18,12 +22,15 @@ const lang = getLangFromUrl(Astro.url)
 		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 		<meta name='generator' content={Astro.generator} />
 		<ClientRouter />
-		<title>Astro Basics</title>
+		<title>MAD PULSE | {title || 'HOME'}</title>
 	</head>
-	<body>
+	<body class='flex flex-col min-h-screen gap-10' )>
 		<Header isMain={isMain} />
+		<main class={cn('flex flex-col mx-auto', !isMain ? '!pt-24' : '')}>
+			{heading ? <SectionHeadingType2 heading={heading} /> : null}
 
-		<slot />
+			<slot />
+		</main>
 		<Footer isMain={isMain} />
 	</body>
 </html>
@@ -34,16 +41,16 @@ const lang = getLangFromUrl(Astro.url)
 		margin: 0;
 		box-sizing: border-box;
 	}
-
-	html,
-	body {
-		width: 100%;
-		height: 100%;
-	}
 </style>
 
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const observer = new IntersectionObserver
-	})
-</script>
+<!-- <script>
+	function logWindowWidth() {
+		alert(window.innerWidth)
+	}
+
+
+	logWindowWidth()
+
+
+	window.addEventListener('resize', logWindowWidth)
+</script> -->

@@ -12,14 +12,6 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<Layout title='Schedule' heading='Schedule'>
-	<div class='flex flex-col w-full max-w-screen-xl mx-auto px-24 pb-10'>
-		<img
-			src={lang === 'es'
-				? '/images/schedule_es.png'
-				: '/images/schedule_en.jpg'}
-			alt='schedule'
-			class='rounded-3xl shadow-md'
-		/>
-	</div>
+<Layout>
+	<h2>Registration page</h2>
 </Layout>

@@ -2,49 +2,66 @@
 import { cn } from '../../../utils/twMerge'
 import Navigation from '../molecules/Navigation.tsx'
 import { getLangFromUrl } from '../../i18n/utils'
-import LanguageNav from '../molecules/LanguageNav.astro'
+import LanguageNav from '../molecules/LanguageNav.tsx'
+import MobileNav from '../molecules/MobileNavigation'
 const { isMain } = Astro.props
 const lang = getLangFromUrl(Astro.url)
 const currentPath = Astro.url.pathname
-
-//flex items-center justify-end gap-10
 ---
 
 <header
 	class={cn(
 		isMain ? 'bg-transparent' : 'bg-linear-65 from-custom-green to-custom-blue',
-		'fixed h-25 top-0 left-0 w-full z-20'
+		'fixed h-24 3xl:h-28 top-0 left-0 w-full z-20 transition-all duration-300 ease-in-out'
 	)}
 >
-	{
-		isMain ? (
-			<div
-				id='left-overlay'
-				class='absolute top-0 left-0 w-1/3 h-25 bg-linear-65 from-custom-blue/60 via-custom-green/0 to-custom-green/0'
-			/>
-		) : null
-	}
-
-	{
-		isMain ? (
-			<div class='absolute top-0 right-0 w-1/3  bg-linear-65 from-custom-green/0  via-custom-green/50 to-custom-blue/60 h-25' />
-		) : null
-	}
 	<div
 		class='flex justify-between items-center gap-6 w-full h-full max-w-screen-2xl mx-auto z-50 absolute top-0 left-1/2 -translate-x-1/2'
 	>
-		<a href={`/${lang}/`} '
-			><img src='/images/logo3.svg' class='h-[75px] px-10 z-50' /></a
+		<a href={`/${lang}/`}
+			><img
+				src='/images/logo3.svg'
+				class='h-[70px] 3xl:h-[80px] px-4 lg:px-10 z-50'
+			/></a
 		>
 
-		<div class='flex flex-col h-28 gap-2 items-end justify-center w-1/2 px-10'>
+		<div
+			class='flex h-24 gap-5 lg:gap-10 items-center justify-end w-1/2 py-4 px-4 lg:px-10'
+		>
 			<Navigation
 				client:load
 				currentPath={currentPath}
 				isMain={isMain}
+				isHeader
 				lang={lang}
 			/>
-			<LanguageNav isMain={isMain} lang={lang} />
+			<MobileNav
+				isMain={isMain}
+				currentPath={currentPath}
+				lang={lang}
+				client:load
+			/>
+			<div class='h-8'>
+				<LanguageNav
+					currentPath={currentPath}
+					isMain={isMain}
+					lang={lang}
+					client:load
+				/>
+			</div>
 		</div>
 	</div>
 </header>
+
+<script>
+	window.addEventListener('scroll', () => {
+		const header = document.querySelector('header')
+		if (window.scrollY > 40) {
+			header?.classList.add('bg-custom-darker-green')
+			header?.classList.remove('bg-transparent')
+		} else {
+			header?.classList.add('bg-transparent')
+			header?.classList.remove('bg-custom-darker-green')
+		}
+	})
+</script>

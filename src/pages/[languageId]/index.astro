@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import Hero from '../../components/molecules/Hero.astro'
+import QuoteMain from '../../components/molecules/QuoteMain.astro'
 
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
-import LogoComponent from '../../components/atoms/Logo.tsx'
 
 export async function getStaticPaths() {
 	return [{ params: { languageId: 'es' } }, { params: { languageId: 'en' } }]
@@ -13,65 +14,6 @@ const t = useTranslations(lang)
 ---
 
 <Layout>
-	<div
-		class="relative top-0 left-0 w-full h-full z-0 bg-[url('/images/background-hero.jpg')] bg-no-repeat bg-cover max-h-[750px]"
-	>
-		<div class='w-full h-full bg-almost-black/20'></div>
-		<div
-			class='absolute top-1/2 left-0 -translate-y-1/3 gap-0 right-0 flex flex-col w-full max-w-screen-2xl items-end justify-start font-newake text-7xl 2xl:8xl text-white mx-auto my-0 px-10'
-		>
-			<div class='flex gap-2'>
-				<span class='font-newake'>MAD</span><span class='font-newake'
-					>PULSE</span
-				>
-			</div>
-
-			<div class='text-6xl font-newake'>29 30 31 DICIEMBRE</div>
-			<div class='text-5xl font-newake'>MADRID</div>
-			<div class='text-3xl font-newake'>
-				NEW YEAR'S CONTACT IMPRO DANCE EVENT
-			</div>
-			<button
-				class='mt-7 font-open-sans font-bold flex justify-center items-center hover:opacity-80
-			bg-white
-				text-sm
-				text-almost-black
-				rounded-4xl
-				px-4
-				py-2
-				transition-opacity
-				transition-discrete
-				cursor-pointer'
-				>RESERVA TU PLAZA</button
-			>
-		</div>
-	</div>
-	<div class="white-section w-full'">
-		<div
-			class='flex flex-col items-center gap-10 w-full max-w-screen-lg mx-auto py-48 font-open-sans'
-		>
-			<h2
-				class='text-4xl font-open-sans font-medium text-almost-black text-center'
-			>
-				<i>“Touch doesn’t say what to do, touch says ‘I’m with you.”</i>
-			</h2>
-			<div class='h-[1px] w-1/5 bg-custom-blue'></div>
-			<p class='font-open-sans text-almost-black text-center'>
-				Estamos entusiasmados de presentar un encuentro especial de Danza
-				Contact, creado con cariño y dedicación para quienes forman parte de
-				esta práctica. En esta edición, reunimos a profesores y facilitadores de
-				Madrid y alrededores —nuestra comunidad cercana— para compartir un
-				espacio de aprendizaje, conexión y celebración. Ofreceremos workshops de
-				3 horas a cargo de Carmen Alcalde, Lucía Sánchez, Sergio Palomares, Cata
-				Mahecha, Marta Wrzesinska y Jesús Alonso, con el objetivo de profundizar
-				en la técnica desde diferentes enfoques. Además, habrá jams abiertas
-				para integrar lo aprendido en un ambiente de exploración y disfrute
-				compartido. Queremos también celebrar el cierre del año bailando juntos.
-				Por eso, el 31 por la noche, te invitamos a una cena y una verbena
-				festiva para brindar por la comunidad, la danza y todo lo que nos une.
-				Un espacio para investigar, compartir y celebrar. Te esperamos en la
-				pista.
-			</p>
-		</div>
-	</div>
+	<Hero />
+	<QuoteMain />
 </Layout>

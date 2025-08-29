@@ -1,0 +1,39 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import Header from '../../../components/organisms/Header.astro'
+import { CarouselControlled } from '../../../components/organisms/Carousel'
+
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
+import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
+
+export async function getStaticPaths() {
+	return [{ params: { languageId: 'es' } }, { params: { languageId: 'en' } }]
+}
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<Layout title='THE PLACE DANCE STUDIO' heading='THE PLACE DANCE STUDIO'>
+	<div class='flex flex-col w-full max-w-screen-2xl mx-auto'>
+		<CarouselControlled client:load />
+		<p>ESPACIO DE 220 m2 DOTADO DE LINÓLEO Y EQUIPO DE MÚSICA</p>
+
+		<SectionHeadingType2 heading='Cómo llegar' />
+		<div class='flex gap-10'>
+			<div class='w-1/2'>
+				<iframe
+					width='100%'
+					height='100%'
+					src='https://www.openstreetmap.org/export/embed.html?bbox=-3.6108273267745976%2C40.43595236595643%2C-3.6058062314987187%2C40.4385654527029&layer=mapnik&marker=40.4372581586365%2C-3.6083176500000036'
+					style='; border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);'
+				></iframe><small
+					><a
+						href='https://www.openstreetmap.org/?mlat=40.437258&mlon=-3.608318#map=18/40.437258/-3.608318'
+						class='font-open-sans'>Ver el mapa más grande</a
+					></small
+				>
+			</div>
+		</div>
+	</div>
+</Layout>

@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<div
+	class="relative top-0 left-0 w-full z-0 bg-[url('/images/background-hero.jpg')] bg-no-repeat bg-cover min-h-[750px] h-[95vh]"
+>
+	<div class='w-full h-full bg-almost-black/20'></div>
+	<div
+		class='absolute top-1/2 left-0 -translate-y-1/2 lg:-translate-y-1/3 gap-4 lg:gap-2 right-0 flex flex-col w-full max-w-screen-2xl items-center lg:items-end justify-start font-newake text-6xl md:text-7xl 2xl:text-7xl text-white mx-auto my-0 px-4 lg:px-10'
+	>
+		<div class='flex gap-0 text-shadow-md leading-none'>
+			<span class='font-newake tracking-wider'>MAD</span><span
+				class='font-newake tracking-wider'>PULSE</span
+			>
+		</div>
+
+		<div
+			class='flex flex-col text-5xl md:text-6xl justify-start items-center lg:items-end text-shadow-md'
+		>
+			<span class='font-newake leading-none tracking-wider text-center'
+				>{t('hero.dates')}</span
+			>
+			<span class='font-newake leading-none tracking-wider'>MADRID</span>
+		</div>
+
+		<span
+			class='text-2xl lg:text-3xl font-newake tracking-wider text-shadow-md text-center'
+		>
+			{t('hero.description').toUpperCase()}
+		</span>
+		<button
+			class='mt-2 font-open-sans font-bold flex justify-center items-center hover:opacity-80
+ bg-white
+  text-sm
+  text-almost-black
+  rounded-4xl
+  px-4
+  py-2
+  transition-opacity
+  transition-discrete
+  cursor-pointer
+  shadow-2xl'
+			><a href={`/${lang}/registration`}>{t('hero.CTA').toUpperCase()}</a
+			></button
+		>
+	</div>
+</div>
