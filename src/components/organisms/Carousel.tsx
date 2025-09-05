@@ -11,61 +11,47 @@ const images = [
 	{ src: '/images/space/5.png' },
 ]
 
-export const CarouselControlled = () => {
-	const [page, setPage] = useState(0)
-
+function InsideCarousel() {
 	return (
-		<Carousel.Root
-			autoplay={true}
-			slideCount={images.length}
-			page={page}
-			onPageChange={e => setPage(e.page)}
-		>
-			<div className='relative w-full max-w-screen-2xl mx-auto overflow-hidden  !px-12'>
-				<Carousel.PrevTrigger
-					aria-label='Previous image'
-					className='absolute left-20 top-1/2 -translate-y-1/2 bg-almost-black/40 rounded-full'
-				>
-					<IconContext.Provider
-						value={{ className: 'cursor-pointer text-white text-4xl' }}
-					>
-						<GoChevronLeft />
-					</IconContext.Provider>
-				</Carousel.PrevTrigger>
-				<Carousel.ItemGroup className='w-full max-w-screen-2xl'>
-					{images.map((image, index) => (
-						<Carousel.Item key={index} index={index}>
-							<img
-								src={image.src}
-								alt={`Slide ${index + 1}`}
-								className='w-full h-full object-cover'
-							/>
-						</Carousel.Item>
-					))}
-				</Carousel.ItemGroup>
-
-				<Carousel.NextTrigger
-					aria-label='Next image'
-					className='absolute right-20 top-1/2 -translate-y-1/2 bg-almost-black/40 rounded-full'
-				>
-					<IconContext.Provider
-						value={{ className: 'cursor-pointer text-white text-4xl ' }}
-					>
-						<GoChevronRight />
-					</IconContext.Provider>
-				</Carousel.NextTrigger>
-			</div>
-
-			{/* DOTS INDICATOR*/}
-			<Carousel.IndicatorGroup className='mt-10 flex justify-center gap-2'>
-				{images.map((_, index) => (
-					<Carousel.Indicator
-						key={index}
-						index={index}
-						className='h-2 w-2 rounded-full bg-custom-blue/50 data-[current]:bg-custom-blue'
-					/>
+		<>
+			<Carousel.ItemGroup>
+				{images.map((image, index) => (
+					<Carousel.Item key={index} index={index}>
+						<img
+							src={image.src}
+							alt={`Slide ${index}`}
+							className='h-full w-full object-cover px-2'
+						/>
+					</Carousel.Item>
 				))}
-			</Carousel.IndicatorGroup>
-		</Carousel.Root>
+			</Carousel.ItemGroup>
+		</>
+	)
+}
+
+export const CustomCarousel = () => {
+	return (
+		<div className='my-10'>
+			<div className='hidden lg:block'>
+				<Carousel.Root
+					slideCount={images.length}
+					autoplay
+					loop
+					slidesPerPage={3}
+				>
+					<InsideCarousel />
+				</Carousel.Root>
+			</div>
+			<div className='block lg:hidden'>
+				<Carousel.Root
+					slideCount={images.length}
+					autoplay
+					loop
+					slidesPerPage={1}
+				>
+					<InsideCarousel />
+				</Carousel.Root>
+			</div>
+		</div>
 	)
 }

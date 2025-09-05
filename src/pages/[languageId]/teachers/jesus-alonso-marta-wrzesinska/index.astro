@@ -11,22 +11,22 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<Layout title='Carmen Alcalde' heading=''>
+<Layout title='Marta Wrzesińska & Jesús Alonso' heading=''>
 	<div class='centerElement mt-14'>
 		<div class='flex flex-col lg:flex-row items-start gap-0 lg:gap-14'>
 			<div class='flex flex-col mp-4 lg:mb-10'>
 				<SectionHeadingType2
-					heading={t('teachers.carmen-alcalde.title1')}
+					heading={t('teachers.marta-jesus.title1')}
 					customClass='items-center lg:items-start order-1'
 				/>
 
 				<p class='text-center md:text-left order-2'>
-					{t('teachers.carmen-alcalde.text1')}
+					{t('teachers.marta-jesus.text1')}
 				</p>
 			</div>
 			<img
 				class='hidden lg:block w-[170px] lg:w-1/4 h-auto rounded-full shadow-md self-center lg:self-start mt-10'
-				src='/images/teachers/carmen.jpg'
+				src='/images/teachers/jesus-marta.jpg'
 				alt=''
 			/>
 		</div>
@@ -37,16 +37,25 @@ const t = useTranslations(lang)
 			<div class='flex flex-col items.center mb-14'>
 				<img
 					class='block lg:hidden w-[170px] lg:w-1/4 h-auto rounded-full shadow-md self-center my-10'
-					src='/images/teachers/carmen.jpg'
+					src='/images/teachers/jesus-marta.jpg'
 					alt=''
 				/>
 				<SectionHeadingType2
-					heading='Carmen Alcalde'
+					heading='Marta Wrzesińska'
+					customClass='items-center lg:items-start'
+				/>
+
+				<p class='text-center md:text-left mb-10'>
+					{t('teachers.marta-jesus.text2')}
+				</p>
+
+				<SectionHeadingType2
+					heading='JESÚS ALONSO'
 					customClass='items-center lg:items-start'
 				/>
 
 				<p class='text-center md:text-left'>
-					{t('teachers.carmen-alcalde.text2')}
+					{t('teachers.marta-jesus.text3')}
 				</p>
 			</div>
 			<div class='w-2/3 lg:w-1/4 h-10 shrink-0 invisible lg:visible'></div>

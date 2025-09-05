@@ -40,11 +40,11 @@ export const teachers = [
 	},
 	{
 		title: 'Marta Wrzesińska',
-		url: '/teachers/marta-wrzesinska',
+		url: '/teachers/jesus-alonso-marta-wrzesinska',
 	},
 	{
 		title: 'Jesús Alonso',
-		url: '/teachers/jesus-alonso',
+		url: '/teachers/jesus-alonso-marta-wrzesinska',
 	},
 	,
 ] as const
@@ -82,11 +82,11 @@ export const mobileNavItems = [
 	},
 	{
 		title: 'nav.marta-wrzesinska',
-		url: 'teachers/marta-wrzesinska',
+		url: 'teachers/jesus-alonso-marta-wrzesinska',
 	},
 	{
 		title: 'nav.jesus-alonso',
-		url: 'teachers/jesus-alonso',
+		url: 'teachers/jesus-alonso-marta-wrzesinska',
 	},
 	{
 		title: 'nav.space',

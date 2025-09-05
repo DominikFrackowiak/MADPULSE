@@ -4,14 +4,16 @@ import { cn } from 'utils/twMerge'
 import { ClientRouter } from 'astro:transitions'
 import Header from '../components/organisms/Header.astro'
 import Footer from '@/components/organisms/Footer.astro'
-import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
+
 const currentPath = Astro.url.pathname
-const pathSplitted = currentPath.split('/')
-const isMain = pathSplitted[pathSplitted.length - 1] === ''
+
+const segments = Astro.url.pathname.split('/').filter(Boolean)
+const isMain = segments.length === 1
+
 import { getLangFromUrl, useTranslations } from '../i18n/utils'
-import SectionTitle from '@/components/atoms/SectionTitle.astro'
+
 const lang = getLangFromUrl(Astro.url)
-const { title, heading } = Astro.props
+const { title } = Astro.props
 ---
 
 <!doctype html>
@@ -19,16 +21,20 @@ const { title, heading } = Astro.props
 	<head>
 		<meta charset='UTF-8' />
 		<meta name='viewport' content='width=device-width' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<link rel='icon' type='image/svg+xml' href='/images/favicon.jpg' />
 		<meta name='generator' content={Astro.generator} />
 		<ClientRouter />
 		<title>MAD PULSE | {title || 'HOME'}</title>
 	</head>
-	<body class='flex flex-col min-h-screen gap-10' )>
+	<body class='flex flex-col min-h-screen' )>
 		<Header isMain={isMain} />
-		<main class={cn('flex flex-col mx-auto', !isMain ? '!pt-24' : '')}>
-			{heading ? <SectionHeadingType2 heading={heading} /> : null}
-
+		<main
+			class={cn(
+				'flex flex-col mx-auto flex-1 bg-[url(/images/texture.png)] bg-center bg-cover',
+				!isMain ? '!pt-24' : '',
+				''
+			)}
+		>
 			<slot />
 		</main>
 		<Footer isMain={isMain} />
@@ -42,15 +48,3 @@ const { title, heading } = Astro.props
 		box-sizing: border-box;
 	}
 </style>
-
-<!-- <script>
-	function logWindowWidth() {
-		alert(window.innerWidth)
-	}
-
-
-	logWindowWidth()
-
-
-	window.addEventListener('resize', logWindowWidth)
-</script> -->

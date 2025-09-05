@@ -35,7 +35,7 @@ export default function MobileNav({
 						{mobileNavItems.map((item, idx) => (
 							<a
 								className={cn(
-									'pb-0 font-open-sans !text-xs !3xl:text-md border-b-2',
+									'pb-0 font-open-sans !text-xs !3xl:text-md border-b-1',
 									// idx < 5 ? 'border-b-2' : null,
 									isMain ? 'border-custom-green' : 'border-custom-blue'
 								)}

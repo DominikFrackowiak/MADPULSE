@@ -1,7 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro'
-import Header from '../../../components/organisms/Header.astro'
-
+import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
 
 export async function getStaticPaths() {
@@ -12,14 +11,60 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<Layout title='Schedule' heading='Schedule'>
-	<div class='flex flex-col w-full max-w-screen-xl mx-auto px-24 pb-10'>
-		<img
-			src={lang === 'es'
-				? '/images/schedule_es.png'
-				: '/images/schedule_en.jpg'}
-			alt='schedule'
-			class='rounded-3xl shadow-md'
+<Layout title={t('schedule.title')}>
+	<div class='centerElement verticalDistance'>
+		<SectionHeadingType2
+			heading={t('schedule.title')}
+			customClass='items-center lg:items-start'
 		/>
+
+		<div class='schedule-container'>
+			<img
+				src={lang === 'es'
+					? '/images/schedule_es.png'
+					: '/images/schedule_en.jpg'}
+				alt='schedule'
+				class='schedule-image rounded-3xl shadow-md'
+			/>
+		</div>
 	</div>
 </Layout>
+
+<style>
+	.schedule-container {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.schedule-image {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+
+	@media (max-width: 1023px) {
+		.schedule-container {
+			width: 100%;
+
+			height: calc((100vw - 2rem) * 1.4);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: visible;
+
+			margin-top: 8rem;
+			margin-bottom: 6rem;
+		}
+
+		.schedule-image {
+			transform: rotate(-90deg);
+
+			height: calc(100vw - 2rem);
+			width: auto;
+			max-width: none;
+			max-height: none;
+		}
+	}
+</style>

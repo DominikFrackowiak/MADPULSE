@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro'
-import Header from '../../../components/organisms/Header.astro'
+import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
+import SectionHeadingType3 from '@/components/atoms/SectionHeadingType3.astro'
 
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
 
@@ -13,5 +14,44 @@ const t = useTranslations(lang)
 ---
 
 <Layout>
-	<h2>Registration page</h2>
+	<div class='centerElement verticalDistance'>
+		<SectionHeadingType2
+			heading={t('registration.title')}
+			customClass='items-center lg:items-start'
+		/>
+		<SectionHeadingType3
+			heading={t('registration.earlyBirds.title')}
+			customClass='items-center lg:items-start'
+		/>
+		<span class='block text-center lg:text-left'
+			>{t('registration.earlyBirds.price')}</span
+		>
+		<SectionHeadingType3
+			heading={t('registration.regularPrice.title')}
+			customClass='items-center lg:items-start'
+		/>
+		<span class='block text-center lg:text-left'
+			>{t('registration.regularPrice.price')}</span
+		>
+		<SectionHeadingType3
+			heading={t('registration.howToBook.title')}
+			customClass='items-center lg:items-start'
+		/>
+		<ul class='flex flex-col gap-1'>
+			<li
+				class='text-center lg:text-left'
+				set:html={t('registration.howToBook.step1')}
+			/>
+			<li class='text-center lg:text-left'>
+				{t('registration.howToBook.step2')}
+			</li>
+		</ul>
+		<SectionHeadingType3
+			heading={t('registration.cancellationPolicy.title')}
+			customClass='items-center lg:items-start'
+		/>
+		<span class='block text-center lg:text-left'
+			>{t('registration.cancellationPolicy.text')}</span
+		>
+	</div>
 </Layout>

@@ -145,11 +145,19 @@
 		@apply border-border outline-ring/50;
 		@apply font-open-sans;
 	}
-	body {
+	/* body {
 		@apply bg-background text-foreground;
 		pointer-events: auto !important;
-	}
+	} */
 	.svg-logo {
 		fill: '#999999';
+	}
+
+	.centerElement {
+		@apply w-full max-w-screen-lg mx-auto !px-4 lg:px-24;
+	}
+
+	.verticalDistance {
+		@apply my-14;
 	}
 }

@@ -3,7 +3,7 @@ import { getLangFromUrl } from '../../i18n/utils'
 
 const { isMain } = Astro.props
 import { cn } from 'utils/twMerge'
-import Navigation from '../molecules/Navigation.tsx'
+import { PiWhatsappLogoThin } from 'react-icons/pi'
 import Envelope from '../atoms/Envelope'
 
 const lang = getLangFromUrl(Astro.url)
@@ -13,14 +13,46 @@ const currentPath = Astro.url.pathname
 <footer
 	class={cn(
 		isMain ? 'bg-linear-65 from-custom-green to-custom-blue' : 'bg-custom-blue',
-		'flex items-center relative bottom-0 left-0 w-full px-10 h-12'
+		' relative bottom-0 left-0 w-full px-4 lg:px-10 py-4'
 	)}
 >
-	<Navigation
-		client:load
-		currentPath={currentPath}
-		isMain={isMain}
-		lang={lang}
-	/>
-	<Envelope client:load />
+	<div
+		class='flex w-full h-full max-w-screen-2xl mx-auto justify-between items-center gap-2'
+	>
+		<div class='flex gap-3'>
+			<!-- <span class='text-white hidden md:block'
+				>{lang === 'es' ? 'CONTACTO:' : 'CONTACT:'}</span
+			> -->
+			<!-- <span class='text-white'>Marta:</span> -->
+			<Envelope text='Contact: Marta' email='wrzemarta@gmail.com' client:load />
+
+			<!-- <a
+				aria-label='Chat on WhatsApp'
+				href='https://wa.me/34654114398'
+				class='flex gap-2 text-2xl text-white'
+			>
+			
+				<PiWhatsappLogoThin />
+				
+			</a> -->
+			<!-- <span class='text-white'>Jesús:</span> -->
+			<!-- <Envelope
+				text='Contact: Jesus'
+				email='jesusalonsodanzaci@gmail.com'
+				client:load
+			/> -->
+			<a
+				aria-label='Chat on WhatsApp'
+				href='https://wa.me/34635683394'
+				class='text-2xl text-white'
+			>
+				<PiWhatsappLogoThin />
+			</a>
+		</div>
+		<a
+			class='!h-6'
+			href={`https://dominikfrackowiak.com/${lang}`}
+			target='_blank'><img class='h-full' src='/images/Logo.svg' /></a
+		>
+	</div>
 </footer>

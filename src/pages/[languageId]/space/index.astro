@@ -1,10 +1,11 @@
 ---
 import Layout from '../../../layouts/Layout.astro'
-import Header from '../../../components/organisms/Header.astro'
-import { CarouselControlled } from '../../../components/organisms/Carousel'
+import { CustomCarousel } from '../../../components/organisms/Carousel'
+import Address from '@/components/molecules/Address'
 
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
 import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
+import { PiCaretCircleDown } from 'react-icons/pi'
 
 export async function getStaticPaths() {
 	return [{ params: { languageId: 'es' } }, { params: { languageId: 'en' } }]
@@ -14,25 +15,80 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<Layout title='THE PLACE DANCE STUDIO' heading='THE PLACE DANCE STUDIO'>
-	<div class='flex flex-col w-full max-w-screen-2xl mx-auto'>
-		<CarouselControlled client:load />
-		<p>ESPACIO DE 220 m2 DOTADO DE LINÓLEO Y EQUIPO DE MÚSICA</p>
+<Layout title={t('space.title')} heading=''>
+	<div class='centerElement verticalDistance'>
+		<SectionHeadingType2
+			heading={t('space.title')}
+			customClass='items-center lg:items-start'
+		/>
+		<div class='flex flex-col'>
+			<ul class='flex flex-col gap-1 items-center lg:items-start'>
+				<li class='flex gap-3 items-center text-almost-black font-open-sans'>
+					<span class='text-custom-darker-green text-xl'
+						><PiCaretCircleDown /></span
+					>{t('space.features.size')}
+				</li>
+				<li class='flex gap-3 items-center text-almost-black font-open-sans'>
+					<span class='text-custom-darker-green text-xl'
+						><PiCaretCircleDown /></span
+					>
+					{t('space.features.floor')}
+				</li>
+			</ul>
 
-		<SectionHeadingType2 heading='Cómo llegar' />
-		<div class='flex gap-10'>
-			<div class='w-1/2'>
-				<iframe
-					width='100%'
-					height='100%'
-					src='https://www.openstreetmap.org/export/embed.html?bbox=-3.6108273267745976%2C40.43595236595643%2C-3.6058062314987187%2C40.4385654527029&layer=mapnik&marker=40.4372581586365%2C-3.6083176500000036'
-					style='; border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);'
-				></iframe><small
-					><a
-						href='https://www.openstreetmap.org/?mlat=40.437258&mlon=-3.608318#map=18/40.437258/-3.608318'
-						class='font-open-sans'>Ver el mapa más grande</a
-					></small
+			<CustomCarousel client:load />
+
+			<SectionHeadingType2
+				heading={t('space.howToGet.title')}
+				customClass='items-center lg:items-start'
+			/>
+			<div class='flex flex-col lg:flex-row'>
+				<div
+					class='hidden lg:flex flex-col w-full lg:w-1/2 gap-4 order-1 xl:order-0'
 				>
+					<iframe
+						width='300px'
+						height='200px'
+						src='https://www.openstreetmap.org/export/embed.html?bbox=-3.6108273267745976%2C40.43595236595643%2C-3.6058062314987187%2C40.4385654527029&layer=mapnik&marker=40.4372581586365%2C-3.6083176500000036'
+						style='; border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);'
+					></iframe>
+				</div>
+				<div
+					class='flex lg:hidden flex-col w-full lg:w-1/2 gap-4 order-1 xl:order-0'
+				>
+					<iframe
+						width='100%'
+						height='100%'
+						src='https://www.openstreetmap.org/export/embed.html?bbox=-3.6108273267745976%2C40.43595236595643%2C-3.6058062314987187%2C40.4385654527029&layer=mapnik&marker=40.4372581586365%2C-3.6083176500000036'
+						style='; border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);'
+					></iframe>
+				</div>
+				<div
+					class='flex flex-col gap-10 items-center lg:items-end order-0 flex-1'
+				>
+					<Address
+						client:load
+						street={t('address.street')}
+						closeTo={t('address.near')}
+						metro={t('address.metro')}
+					/>
+					<button
+						class='mt-2 font-open-sans font-bold flex justify-center items-center hover:opacity-80
+ bg-custom-darker-green
+  text-sm
+  text-white
+  rounded-4xl
+  px-4
+  py-2
+  transition-opacity
+  transition-discrete
+  cursor-pointer
+  shadow-2xl my-10'
+						><a href=`https://maps.app.goo.gl/x1rJdbZ28WU45SCv6` target='_blank'
+							>{t('space.button.openInMaps')}</a
+						></button
+					>
+				</div>
 			</div>
 		</div>
 	</div>

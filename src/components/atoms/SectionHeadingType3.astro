@@ -1,0 +1,13 @@
+---
+import { cn } from '../../../utils/twMerge'
+const { heading, customClass } = Astro.props
+---
+
+<div class={cn('flex flex-col py-4', customClass)}>
+	<h3
+		class='font-semibold text-almost-black text-md lg:text-[md] font-open-sans inline-block !pb-1'
+	>
+		<!-- <slot name='icon' />{heading.toUpperCase()} -->
+		{heading.toUpperCase()}
+	</h3>
+</div>
