@@ -18,21 +18,30 @@ function normalizePath(p: string) {
 
 export default function Nav({ currentPath, lang, isMain, isHeader }: NavProps) {
 	const t = useTranslations(lang)
-
 	const normalized = normalizePath(currentPath)
-	// const currentPathSplitted = currentPath.split('/')
-	// const currentPage = currentPathSplitted[currentPathSplitted.length - 1]
+	const base = `/${lang}`
+	const isWelcomePath = normalized === base
 
-	// console.log({ currentPage })
+	const teachersBase = `${base}/teachers`
+	const isTeachersPath =
+		normalized === teachersBase || normalized.startsWith(`${teachersBase}/`)
 
 	return (
 		<nav className='hidden xl:block'>
 			<ul className='flex gap-5 items-center h-8'>
 				{navItems.map((item, index) => {
-					const href = normalizePath(`/${lang}/${item.url ?? ''}`)
-					const isWelcome = normalized === `/${lang}`
+					const isWelcomeItem = item.title === 'nav.welcome'
+					const isTeachersItem = item.title === 'nav.teachers'
+
+					const href =
+						item.url != null ? normalizePath(`${base}/${item.url}`) : undefined
+
+					const isExact = href ? normalized === href : false
+
 					const isActive =
-						normalized === href || (isWelcome && item.title === 'nav.welcome')
+						(isWelcomeItem && isWelcomePath) ||
+						(isTeachersItem && isTeachersPath) ||
+						(!isWelcomeItem && !isTeachersItem && isExact)
 					return (
 						<li
 							key={index}
