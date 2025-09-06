@@ -16,6 +16,8 @@ export default function Nav({ currentPath, lang, isMain, isHeader }: NavProps) {
 	const currentPathSplitted = currentPath.split('/')
 	const currentPage = currentPathSplitted[currentPathSplitted.length - 1]
 
+	console.log({ currentPage })
+
 	return (
 		<nav className='hidden xl:block'>
 			<ul className='flex gap-5 items-center h-8'>
