@@ -16,10 +16,10 @@ export default function Address({
 				<span className='text-custom-darker-green text-xl'>
 					<PiNavigationArrow />
 				</span>
-				<div className='flex flex-col items-center lg:items-end'>
+				<span className='flex flex-col items-center lg:items-end'>
 					<span className=' text-end'>{street}</span>
 					<span className=''>{closeTo}</span>
-				</div>
+				</span>
 			</p>
 
 			<p className='flex gap-3 items-center text-almost-black font-open-sans justify-end'>
