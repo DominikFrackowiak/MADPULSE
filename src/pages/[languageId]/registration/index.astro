@@ -13,7 +13,7 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<Layout>
+<Layout title={t('registration.title')}>
 	<div class='centerElement verticalDistance'>
 		<SectionHeadingType2
 			heading={t('registration.title')}
