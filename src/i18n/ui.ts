@@ -144,7 +144,7 @@ export const ui = {
 		'teachers.catalina-mahecha.text2':
 			'Bailarina, Improvisadora, investigadora del cuerpo en movimiento. Amante de la naturaleza y los procesos artísticos al servicio del Ser. Licenciada en Humanidades y Educación Artística. Caminante en los círculos de Medicina Ancestral. Estudiante de Gestalt Transpersonal. Practicante y docente de Contact Improvisación y Proceso Corporal Integrativo desde 2015. Acompañante de procesos de autoconocimiento a través de la danza y el movimiento. Creadora de Cuerpo Mágico, práctica de improvisación para danza. Actualmente me dedico a la docencia de prácticas de danza junto al desarrollo de proyectos que caminan en el Arte y el Ritual.',
 
-		'teachers.marta-jesus.title1': 'Construyedo presencia compartida',
+		'teachers.marta-jesus.title1': 'Construyendo presencia compartida',
 		'teachers.marta-jesus.text1':
 			'¿Qué sucede cuando dos cuerpos se escuchan desde la estructura, cuando el tacto no guía, sino sugiere? Este taller es una invitación a habitar la presencia compartida desde la arquitectura sensible del cuerpo: abrir espacio en la columna, articular los centros y permitir que algo se organice desde dentro, sin prisa. El movimiento nace del contacto, pero también del vacío entre dos direcciones, del impulso que no se busca, de la inercia que nos encuentra. Nos acercamos y nos alejamos como cuerpos en órbita, sin necesidad de llegar a ningún lugar, pero abiertos a que algo —una suspensión, un vuelo— pueda aparecer. Una propuesta para quienes desean danzar desde el sentir, sostenerse desde la escucha, y explorar el movimiento como un estado de relación.',
 		'teachers.marta-jesus.name1': 'Marta Wrzesińska',
