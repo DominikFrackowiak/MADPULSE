@@ -4,11 +4,11 @@ import { GoChevronLeft, GoChevronRight } from 'react-icons/go'
 import { IconContext } from 'react-icons/lib'
 
 const images = [
-	{ src: '/images/space/1.jpg' },
-	{ src: '/images/space/2.jpg' },
-	{ src: '/images/space/3.png' },
-	{ src: '/images/space/4.png' },
-	{ src: '/images/space/5.png' },
+	{ src: '/images/space/1.jpeg' },
+	{ src: '/images/space/2.jpeg' },
+	{ src: '/images/space/3.jpeg' },
+	{ src: '/images/space/4.jpeg' },
+	{ src: '/images/space/5.jpeg' },
 ]
 
 function InsideCarousel() {
