@@ -23,9 +23,9 @@
 	--color-custom-gray: #757575;
 	--color-custom-light-gray: #e8e8e8;
 	--color-background-gray: #c6c5c3;
-	--color-custom-green: #96fc36;
-	--color-custom-darker-green: #86d733;
-	--color-custom-blue: #81b8ea;
+	--color-custom-green: #8c66b7;
+	--color-custom-darker-green: #8c66b7;
+	--color-custom-blue: #8c66b7;
 
 	--breakpoint-sm: 40rem; /* 640px */
 	--breakpoint-md: 48rem; /* 768px */
@@ -163,4 +163,15 @@
 	.verticalDistance {
 		@apply my-14;
 	}
+}
+
+.titile-stroke {
+  /* color: transparent!;
+  -webkit-text-stroke: 2px #8c66b7;  */
+
+		  background: linear-gradient(to right, #ff4500, #007bff)!; /* Od koloru do koloru */
+  -webkit-background-clip: text!;
+  background-clip: text!;
+  color: transparent!;
+
 }

@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro'
 import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
+import QuoteMain from '@/components/molecules/QuoteMain.astro'
 
 export async function getStaticPaths() {
 	return [{ params: { languageId: 'es' } }, { params: { languageId: 'en' } }]
@@ -17,7 +18,7 @@ const t = useTranslations(lang)
 			heading={t('schedule.title')}
 			customClass='items-center lg:items-start'
 		/>
-
+		<QuoteMain />
 		<div class='schedule-container'>
 			<img
 				src={lang === 'es'
