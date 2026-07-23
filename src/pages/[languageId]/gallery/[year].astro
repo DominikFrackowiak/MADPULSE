@@ -1,0 +1,20 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import GalleryPage from '@/components/pages/Gallery.astro'
+import { galleryYears } from '../../../../constants/gallery'
+
+export async function getStaticPaths() {
+	return ['es', 'en'].flatMap((languageId) =>
+		galleryYears.map((gallery) => ({
+			params: { languageId, year: gallery.year },
+			props: { gallery },
+		}))
+	)
+}
+
+const { gallery } = Astro.props
+---
+
+<Layout title={gallery.year} heading=''>
+	<GalleryPage gallery={gallery} />
+</Layout>

@@ -1,0 +1,20 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import TeacherPage from '@/components/pages/TeacherPage.astro'
+import { teacherPages } from '../../../../constants/constants'
+
+export async function getStaticPaths() {
+	return ['es', 'en'].flatMap((languageId) =>
+		teacherPages.map((teacher) => ({
+			params: { languageId, teacher: teacher.slug },
+			props: { teacher },
+		}))
+	)
+}
+
+const { teacher } = Astro.props
+---
+
+<Layout title={teacher.name} heading=''>
+	<TeacherPage teacher={teacher} />
+</Layout>

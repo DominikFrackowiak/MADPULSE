@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro'
-import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
-import SectionHeadingType3 from '@/components/atoms/SectionHeadingType3.astro'
+import Heading from '@/components/atoms/Heading.astro'
+// import SectionHeadingType3 from '@/components/atoms/SectionHeadingType3.astro'
 
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
 
@@ -14,44 +14,57 @@ const t = useTranslations(lang)
 ---
 
 <Layout title={t('registration.title')}>
-	<div class='centerElement verticalDistance'>
-		<SectionHeadingType2
+	<div
+		class='flex flex-col gap-8 lg:gap-16 centerElement verticalDistance w-full max-w-screen-2xl px-2.5 py-8 lg:py-16 text-custom-accent-200/70! px-4! lg:px-10!'
+	>
+		<Heading
 			heading={t('registration.title')}
-			customClass='items-center lg:items-start'
+			customClass='items-center lg:items-start uppercase'
 		/>
-		<SectionHeadingType3
-			heading={t('registration.earlyBirds.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<span class='block text-center lg:text-left'
-			>{t('registration.earlyBirds.price')}</span
-		>
-		<SectionHeadingType3
-			heading={t('registration.regularPrice.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<span class='block text-center lg:text-left'
-			>{t('registration.regularPrice.price')}</span
-		>
-		<SectionHeadingType3
-			heading={t('registration.howToBook.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<ul class='flex flex-col gap-1'>
-			<li
-				class='text-center lg:text-left'
-				set:html={t('registration.howToBook.step1')}
+		<section class='flex justify-between'>
+			<div class='flex flex-col gap-2'>
+				<Heading
+					heading={t('registration.earlyBirds.title')}
+					customClass='text-3xl! items-center lg:items-start uppercase  text-custom-accent'
+				/>
+				<span class='block text-center lg:text-left text-lg lg:text-xl'
+					>{t('registration.earlyBirds.price')}</span
+				>
+			</div>
+
+			<div class='flex flex-col items-end gap-2'>
+				<Heading
+					heading={t('registration.regularPrice.title')}
+					customClass='text-3xl! items-center lg:items-start uppercase text-custom-accent'
+				/>
+				<span class='block text-center lg:text-left text-lg lg:text-xl'
+					>{t('registration.regularPrice.price')}</span
+				>
+			</div>
+		</section>
+		<div class='flex flex-col gap-2'>
+			<Heading
+				heading={t('registration.howToBook.title')}
+				customClass='text-2xl! items-center lg:items-start uppercase'
 			/>
-			<li class='text-center lg:text-left'>
-				{t('registration.howToBook.step2')}
-			</li>
-		</ul>
-		<SectionHeadingType3
-			heading={t('registration.cancellationPolicy.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<span class='block text-center lg:text-left'
-			>{t('registration.cancellationPolicy.text')}</span
-		>
+			<ul class='flex flex-col gap-4'>
+				<li
+					class='text-center lg:text-left text-lg lg:text-xl'
+					set:html={t('registration.howToBook.step1')}
+				/>
+				<li class='text-center lg:text-left text-lg lg:text-xl'>
+					{t('registration.howToBook.step2')}
+				</li>
+			</ul>
+		</div>
+		<div class='flex flex-col gap-2'>
+			<Heading
+				heading={t('registration.cancellationPolicy.title')}
+				customClass='text-2xl! items-center lg:items-start uppercase '
+			/>
+			<span class='block text-center lg:text-left text-lg lg:text-xl'
+				>{t('registration.cancellationPolicy.text')}</span
+			>
+		</div>
 	</div>
 </Layout>

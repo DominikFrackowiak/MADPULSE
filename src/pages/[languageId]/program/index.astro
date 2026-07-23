@@ -1,8 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro'
-import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
+import Heading from '@/components/atoms/Heading.astro'
+
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
-import QuoteMain from '@/components/molecules/QuoteMain.astro'
+import QuoteWithText from '@/components/molecules/QuoteWithText.astro'
+import Calendar from '@/components/organisms/Calendar.astro'
 
 export async function getStaticPaths() {
 	return [{ params: { languageId: 'es' } }, { params: { languageId: 'en' } }]
@@ -13,21 +15,23 @@ const t = useTranslations(lang)
 ---
 
 <Layout title={t('schedule.title')}>
-	<div class='centerElement verticalDistance'>
-		<SectionHeadingType2
-			heading={t('schedule.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<QuoteMain />
-		<div class='schedule-container'>
+	<div
+		class='w-full flex flex-col items-center centerElement verticalDistance gap-16 '
+	>
+		<!-- <StrokeTitle text={t('schedule.title')} /> -->
+
+		<QuoteWithText text={'main.quote'} />
+		<!-- <div class='schedule-container'>
 			<img
 				src={lang === 'es'
 					? '/images/schedule_es.png'
-					: '/images/schedule_en.jpg'}
+					: '/images/schedule_en.webp'}
 				alt='schedule'
 				class='schedule-image rounded-3xl shadow-md'
 			/>
-		</div>
+		</div> -->
+		<Heading heading='schedule.title' />
+		<Calendar />
 	</div>
 </Layout>
 
