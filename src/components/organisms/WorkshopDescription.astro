@@ -1,0 +1,63 @@
+---
+import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
+import type { teacherPages } from '../../../constants/constants'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+
+type TeacherPageData = (typeof teacherPages)[number]
+
+interface Props {
+	teacher: TeacherPageData
+}
+
+const { teacher } = Astro.props
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const isImageToTheLeft = !teacher.isImageToTheLeft
+const imageOrderClass = isImageToTheLeft ? 'order-1' : 'order-2'
+const imageEdgeClass = isImageToTheLeft
+	? 'lg:ml-[calc((min(100vw,96rem)-100vw)/2)]'
+	: 'lg:mr-[calc((min(100vw,96rem)-100vw)/2)]'
+const descriptionOrderClass = isImageToTheLeft ? 'order-2' : 'order-1'
+
+const getParagraphs = (text: string) =>
+	text
+		.split(/\n\s*\n/)
+		.map(paragraph => paragraph.trim())
+		.filter(Boolean)
+---
+
+<div class='w-full bg-custom-accent/85'>
+	<div class='flex flex-col items-start gap-8 px-8 py-16 lg:px-16'>
+		<div
+			class='flex flex-col lg:flex-row justify-between items-stretch w-full gap-8 lg:gap-16 py-8 max-w-screen-2xl mx-auto'
+		>
+			<div
+				class:list={[
+					'w-full lg:max-w-[38%] space-y-6 text-center md:text-left text-white! leading-relaxed',
+					descriptionOrderClass,
+				]}
+			>
+				<SectionHeadingType2
+					heading={t(teacher.title)}
+					customClass='items-center lg:items-start text-white!'
+				/>
+				{
+					getParagraphs(t(teacher.description1)).map(paragraph => (
+						<p>{paragraph}</p>
+					))
+				}
+			</div>
+
+			<div
+				class:list={[
+					'w-full lg:w-[calc(55%+(100vw-min(100vw,96rem))/2)] min-h-[460px]! lg:min-h-0 self-stretch bg-cover bg-center bg-no-repeat shadow-md mt-2',
+					imageOrderClass,
+					imageEdgeClass,
+				]}
+				style={`background-image: url('${teacher.imageSrc}')`}
+			>
+			</div>
+		</div>
+	</div>
+</div>

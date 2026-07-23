@@ -1,0 +1,43 @@
+---
+import CalendarCell from '@/components/molecules/CalendarCell.astro'
+import { days, workshops } from '../../../constants/constants'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const mobileWorkshops = days.flatMap(day =>
+	workshops.filter(workshop => workshop.day === day)
+)
+---
+
+<section
+	class='flex justify-center items-center w-full! min-h-[40vh] py-16 custom-gradient'
+>
+	<div class='w-full max-w-screen-2xl p-8 rounded'>
+		<div class='hidden lg:grid grid-cols-1 lg:grid-cols-3'>
+			{
+				days.map(day => (
+					<h3 class='flex justify-center items-center pb-8 font-newake font-bold text-2xl text-custom-accent-200'>
+						{t(day)}
+					</h3>
+				))
+			}
+		</div>
+
+		<div
+			class='grid grid-cols-1 lg:grid-cols-3 border-r-4 border-b-4 border-custom-accent-200'
+		>
+			{
+				mobileWorkshops.map(workshop => (
+					<CalendarCell
+						title={t(workshop.title)}
+						teacher={workshop.teacher ? t(workshop.teacher) : null}
+						hours={t(workshop.hours)}
+						day={t(workshop.day)}
+						desktopOrder={workshops.indexOf(workshop) + 1}
+					/>
+				))
+			}
+		</div>
+	</div>
+</section>

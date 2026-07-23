@@ -5,15 +5,15 @@ import { ClientRouter } from 'astro:transitions'
 import Header from '../components/organisms/Header.astro'
 import Footer from '@/components/organisms/Footer.astro'
 
-const currentPath = Astro.url.pathname
-
 const segments = Astro.url.pathname.split('/').filter(Boolean)
 const isMain = segments.length === 1 || segments.length === 0
 
-import { getLangFromUrl, useTranslations } from '../i18n/utils'
+import { getLangFromUrl } from '../i18n/utils'
 
 const lang = getLangFromUrl(Astro.url)
 const { title } = Astro.props
+
+// !pb-14 !lg:pb-24
 ---
 
 <!doctype html>
@@ -26,18 +26,18 @@ const { title } = Astro.props
 		<ClientRouter />
 		<title>MAD PULSE | {title || 'HOME'}</title>
 	</head>
-	<body class='flex flex-col min-h-screen' )>
+	<body class='relative flex flex-col min-h-screen bg-custom-accent/5' )>
 		<Header isMain={isMain} />
 		<main
 			class={cn(
-				'flex flex-col mx-auto flex-1 bg-[url()] bg-center bg-cover !pb-14 !lg:pb-24',
-				!isMain ? '!pt-14 lg:!pt-24 !mt-14' : '',
+				'flex flex-col items-center! flex-1 gap-2 w-full',
+				!isMain ? 'pt-30! mx-auto!' : '',
 				''
 			)}
 		>
 			<slot />
 		</main>
-		<Footer isMain={isMain} />
+		{!isMain ? <Footer isMain={isMain} /> : null}
 	</body>
 </html>
 

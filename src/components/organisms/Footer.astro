@@ -3,54 +3,37 @@ import { getLangFromUrl } from '../../i18n/utils'
 
 const { isMain } = Astro.props
 import { cn } from 'utils/twMerge'
-import { PiWhatsappLogoThin } from 'react-icons/pi'
-import Envelope from '../atoms/Envelope'
+import EnvelopeIcon from '../atoms/EnvelopeIcon.astro'
+import WhatsappIcon from '../atoms/WhatsappIcon.astro'
 
 const lang = getLangFromUrl(Astro.url)
-const currentPath = Astro.url.pathname
+
 ---
 
 <footer
 	class={cn(
-		isMain ? 'bg-custom-darker-green' : 'bg-custom-blue',
-		' relative bottom-0 left-0 w-full px-4 lg:px-10 py-4'
+		'bottom-0 left-0 w-full  py-4',
+		isMain ? 'bg-transparent absolute' : 'relative  bg-background'
 	)}
 >
 	<div
-		class='flex w-full h-full max-w-screen-2xl mx-auto justify-between items-center gap-2'
+		class='flex w-full h-full max-w-screen-4xl mx-auto justify-between items-center gap-2 px-4 lg:px-10'
 	>
 		<div class='flex gap-3'>
-			<!-- <span class='text-white hidden md:block'
-				>{lang === 'es' ? 'CONTACTO:' : 'CONTACT:'}</span
-			> -->
-			<!-- <span class='text-white'>Marta:</span> -->
-			<Envelope text='Contact: Marta' email='wrzemarta@gmail.com' client:load />
+			<EnvelopeIcon email='wrzemarta@gmail.com' />
 
-			<!-- <a
-				aria-label='Chat on WhatsApp'
-				href='https://wa.me/34654114398'
-				class='flex gap-2 text-2xl text-white'
-			>
-			
-				<PiWhatsappLogoThin />
-				
-			</a> -->
-			<!-- <span class='text-white'>Jesús:</span> -->
-			<!-- <Envelope
-				text='Contact: Jesus'
-				email='jesusalonsodanzaci@gmail.com'
-				client:load
-			/> -->
 			<a
 				aria-label='Chat on WhatsApp'
 				href='https://wa.me/34635683394'
 				class='text-2xl text-white'
 			>
-				<PiWhatsappLogoThin />
+				<WhatsappIcon className='h-7 w-7' />
 			</a>
 		</div>
-		<a class='!h-6' href={`https://www.kraftweb.eu/?locale=${lang}`} target='_blank'
-			><img class='h-full' src='/images/Logo.svg' /></a
+		<a
+			class='!h-6'
+			href={`https://www.kraftweb.eu/?locale=${lang}`}
+			target='_blank'><img class='h-full' src='/images/Logo.svg' /></a
 		>
 	</div>
 </footer>

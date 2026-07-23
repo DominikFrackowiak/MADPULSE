@@ -1,0 +1,94 @@
+---
+import { galleriesNavigation, navItems, teachers } from '../../../constants/constants'
+import { useTranslations, type Lang } from '../../i18n/utils'
+import { cn } from '../../../utils/twMerge'
+import Dropdown from '../atoms/Dropdown.astro'
+
+interface Props {
+	lang: Lang
+	currentPath: string
+	isMain: boolean
+	isHeader?: boolean
+}
+
+const { currentPath, lang, isMain, isHeader } = Astro.props
+const t = useTranslations(lang)
+
+function normalizePath(p: string) {
+	if (p.length > 1 && p.endsWith('/')) return p.slice(0, -1)
+	return p
+}
+
+const normalized = normalizePath(currentPath)
+const base = `/${lang}`
+
+const teachersBase = `${base}/teachers`
+const isTeachersPath =
+	normalized === teachersBase || normalized.startsWith(`${teachersBase}/`)
+const galleryBase = `${base}/gallery`
+const isGalleryPath =
+	normalized === galleryBase || normalized.startsWith(`${galleryBase}/`)
+---
+
+<nav class='hidden xl:block'>
+	<ul class='flex gap-5 items-center h-8'>
+		{
+			navItems.map(item => {
+				const isTeachersItem = item.title === 'nav.teachers'
+				const isGalleryItem = item.title === 'nav.gallery'
+				const dropdownItems =
+					item.dropdown === 'teachers'
+						? teachers
+						: item.dropdown === 'gallery'
+							? galleriesNavigation
+							: null
+
+				const href =
+					item.url != null ? normalizePath(`${base}/${item.url}`) : undefined
+				const isExact = href ? normalized === href : false
+				const isActive =
+					(isTeachersItem && isTeachersPath) ||
+					(isGalleryItem && isGalleryPath) ||
+					(!isTeachersItem && isExact)
+
+				return (
+					<li
+						class={cn(
+							'font-open-sans uppercase text-white',
+							isHeader ? 'pb-1' : '',
+							isHeader && isActive ? 'border-b-2 border-white' : ''
+						)}
+					>
+						{item.url ? (
+							<a
+								class={cn('font-open-sans text-md 4xl:text-lg')}
+								href={`/${lang}/${item.url}`}
+							>
+								{t(item.title)}
+							</a>
+						) : dropdownItems ? (
+							<Dropdown
+								buttonClassName='font-open-sans text-md 4xl:text-lg text-white uppercase'
+								contentClassName='min-w-36'
+							>
+								<Fragment slot='trigger'>{t(item.title)}</Fragment>
+								{dropdownItems.map(dropdownItem => (
+									<a
+										class={cn(
+											'pb-0 font-open-sans !text-xs !3xl:text-md border-b-2',
+											isMain ? 'border-custom-green' : 'border-custom-blue'
+										)}
+										href={`/${lang}${dropdownItem.url}`}
+										role='menuitem'
+									>
+										{dropdownItem.title}
+									</a>
+								))}
+							</Dropdown>
+						) : null}
+					</li>
+				)
+			})
+		}
+	</ul>
+</nav>

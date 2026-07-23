@@ -1,0 +1,117 @@
+---
+import { cn } from '@/lib/utils'
+
+import Heading from '../atoms/Heading.astro'
+import Quote from '../molecules/Quote.astro'
+import type { teacherPages } from '../../../constants/constants'
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+
+type TeacherPageData = (typeof teacherPages)[number]
+
+interface Props {
+	teacher: TeacherPageData
+}
+
+const { teacher } = Astro.props
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+// const imageOrderClass = teacher.isImageToTheLeft ? 'order-1' : 'order-2'
+// const imageEdgeClass = teacher.isImageToTheLeft
+// 	? 'lg:ml-[calc((min(100vw,96rem)-100vw)/2)]'
+// 	: 'lg:mr-[calc((min(100vw,96rem)-100vw)/2)]'
+// const descriptionOrderClass = teacher.isImageToTheLeft ? 'order-2' : 'order-1'
+const teacherTitle = t(teacher.title)
+
+const getParagraphs = (text: string) =>
+	text
+		.split(/\n\s*\n/)
+		.map(paragraph => paragraph.trim())
+		.filter(Boolean)
+
+// max-w-screen-2xl
+// text-custom-accent/85!
+// border-b-5 border-custom-accent/85
+---
+
+<!-- <TeacherDescription teacher={teacher} />
+<WorkshopDescription teacher={teacher} /> -->
+<div
+	class={cn(
+		'relative flex justify-center w-full lg:min-h-[600px] self-stretch bg-cover bg-no-repeat shadow-md -mt-8 z-1',
+		teacher.bgPosition
+	)}
+	style={`background-image: url('${teacher.imageSrc}')`}
+>
+	<div
+		class='absolute top-0 left-0 bottom-0 right-0 bg-custom-accent-200/65 z-2'
+	>
+	</div>
+	<div
+		class='flex flex-col justify-center items-start w-full min-h-[500px] max-w-screen-2xl mb-8 lg:mb-16 px-4! lg:px-10!'
+	>
+		<!-- <div class='flex flex-col'> -->
+		<Heading
+			heading={teacher.name}
+			customClass={cn(
+				'items-start  text-white z-3 text-4xl lg:text-7-4-5xl! uppercase',
+				teacher.isImageToTheLeft ? 'self-start' : 'self-start lg:self-end'
+			)}
+		/>
+
+		<Heading
+			heading={teacherTitle}
+			customClass={cn(
+				'self-start items-start text-custom-accent z-3 text-3xl lg:text-4-5xl! bg-custom  uppercase',
+				teacher.isImageToTheLeft
+					? 'self-start lg:max-w-1/2!'
+					: 'self-start  lg:max-w-1/2! lg:self-end! lg:text-right'
+			)}
+		/>
+		<!-- </div> -->
+	</div>
+</div>
+<!-- <div class='max-w-screen-2xl mx-auto'> -->
+<Quote
+	text='Las manos podrían reflejar el cuerpo, con sus cinco dedos simbolizando las piernas, los brazos y la cabeza.'
+/>
+
+<!-- </div> -->
+<div
+	class='flex flex-col lg:flex-row justify-between items-start w-full mx-auto gap-8 lg:gap-16 max-w-screen-2xl my-8 lg:my-16 px-4! lg:px-10!'
+>
+	<div
+		class='flex flex-col gap-8 lg:gap-16 w-full lg:w-1/2 pt-2.5 pb-8 lg:pb-16 px-2.5'
+	>
+		<div class='space-y-8'>
+			<Heading
+				heading={teacher.name}
+				customClass={cn(
+					'self-start items-start z-3 text-3xl lg:text-4xl! bg-custom text-custom-accent-200/70 uppercase'
+				)}
+			/>
+			{
+				getParagraphs(t(teacher.description2)).map(paragraph => (
+					<p class='text-custom-accent-200'>{paragraph}</p>
+				))
+			}
+		</div>
+	</div>
+	<div
+		class='flex flex-col gap-8 lg:gap-16 w-full lg:w-1/2 bg-custom-accent-200/45! px-2.5 py-4 lg:mt-32'
+	>
+		<div class='space-y-8 text-white'>
+			<Heading
+				heading={teacherTitle}
+				customClass={cn(
+					'self-start items-start text-white z-3 text-3xl lg:text-4xl! bg-custom  uppercase '
+				)}
+			/>
+			{
+				getParagraphs(t(teacher.description1)).map(paragraph => (
+					<p>{paragraph}</p>
+				))
+			}
+		</div>
+	</div>
+</div>

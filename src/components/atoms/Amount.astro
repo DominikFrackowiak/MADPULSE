@@ -1,0 +1,18 @@
+---
+import { cn } from 'utils/twMerge'
+
+interface Props {
+	text: string
+	className?: string
+	as?: 'span' | 'p'
+}
+
+const { text, className, as = 'span' } = Astro.props as Props
+
+const Element = as
+---
+
+<Element class={cn(className)}>
+	{text}
+</Element>
+

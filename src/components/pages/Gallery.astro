@@ -1,0 +1,78 @@
+---
+import { Image } from 'astro:assets'
+import type { galleryYears } from '../../../constants/gallery'
+
+type GalleryData = (typeof galleryYears)[number]
+type GalleryImage = GalleryData['images'][number]
+
+interface Props {
+	gallery: GalleryData
+}
+
+const { gallery } = Astro.props
+---
+
+<main class='w-full max-w-screen-2xl px-4! lg:px-10! py-16'>
+	<h1>GALLERY {gallery.year}</h1>
+	<p>Lorem Ipsum</p>
+
+	<section class='grid grid-cols-3 gap-6'>
+		{
+			gallery.images.map((image: GalleryImage) => (
+				<Image
+					src={image.src}
+					alt={image.alt}
+					data-full-src={image.src.src}
+					class='gallery-img cursor-pointer min-h-[314px] object-cover'
+				/>
+			))
+		}
+	</section>
+	<div
+		class='image-wrapper hidden justify-center items-center fixed top-0 bottom-0 left-0 right-0 bg-white/70 z-60 cursor-pointer'
+	>
+		<img src='' alt='' class='single-image max-h-[95vh] w-auto' />
+	</div>
+</main>
+
+<script>
+	const setupGalleryPreview = () => {
+		const imgWrapper = document.querySelector<HTMLDivElement>('.image-wrapper')
+		const images = document.querySelectorAll<HTMLImageElement>('.gallery-img')
+		const singleImage =
+			document.querySelector<HTMLImageElement>('.single-image')
+
+		if (!imgWrapper || !singleImage) return
+
+		images.forEach(image => {
+			if (image.dataset.galleryPreviewBound === 'true') return
+
+			image.dataset.galleryPreviewBound = 'true'
+			image.addEventListener(
+				'click',
+				() => {
+					const fullSrc = image.dataset.fullSrc
+
+					if (!fullSrc) return
+
+					singleImage.src = fullSrc
+					singleImage.alt = image.alt
+					imgWrapper.classList.remove('hidden')
+					imgWrapper.classList.add('flex')
+				},
+				{ once: false }
+			)
+		})
+
+		if (imgWrapper.dataset.galleryPreviewBound === 'true') return
+
+		imgWrapper.dataset.galleryPreviewBound = 'true'
+		imgWrapper.addEventListener('click', () => {
+			imgWrapper.classList.remove('flex')
+			imgWrapper.classList.add('hidden')
+		})
+	}
+
+	setupGalleryPreview()
+	document.addEventListener('astro:page-load', setupGalleryPreview)
+</script>

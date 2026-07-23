@@ -1,9 +1,9 @@
 ---
 import { cn } from '../../../utils/twMerge'
-import Navigation from '../molecules/Navigation.tsx'
+import Navigation from '../molecules/Navigation.astro'
 import { getLangFromUrl } from '../../i18n/utils'
-import LanguageNav from '../molecules/LanguageNav.tsx'
-import MobileNav from '../molecules/MobileNavigation'
+import LanguageNav from '../molecules/LanguageNav.astro'
+import MobileNav from '../molecules/MobileNavigation.astro'
 const { isMain } = Astro.props
 const lang = getLangFromUrl(Astro.url)
 const currentPath = Astro.url.pathname
@@ -11,57 +11,41 @@ const currentPath = Astro.url.pathname
 
 <header
 	class={cn(
-		isMain ? 'bg-transparent' : 'bg-transparent',
-		'fixed h-24 3xl:h-28 top-0 left-0 w-full z-20 transition-all duration-300 ease-in-out'
+		isMain ? 'bg-transparent' : 'bg-background',
+		'fixed h-20  top-0 left-0 w-full z-20 transition-all duration-300 ease-in-out py-13!'
 	)}
 >
 	<div
-		class='flex justify-between items-center gap-6 w-full h-full max-w-screen-2xl mx-auto z-50 absolute top-0 left-1/2 -translate-x-1/2'
+		class='flex justify-between items-center gap-6 w-full h-full max-w-screen-4xl mx-auto z-50 absolute top-0 left-1/2 -translate-x-1/2 px-4! lg:px-10!'
 	>
 		<a href={`/${lang}/`}
-			><img
-				src='/images/logo3.svg'
-				class='h-[70px] 3xl:h-[80px] px-4 lg:px-10 z-50'
-			/></a
+			><img src='/images/logo.webp' class='h-[55px] 3xl:h-[80px] z-50' /></a
 		>
 
-		<div
-			class='flex h-24 gap-5 lg:gap-10 items-center justify-end w-1/2 py-4 px-4 lg:px-10'
-		>
+		<div class='flex h-24 gap-5 lg:gap-10 items-center justify-end w-1/2 py-4'>
 			<Navigation
-				client:load
 				currentPath={currentPath}
 				isMain={isMain}
 				isHeader
 				lang={lang}
 			/>
-			<MobileNav
-				isMain={isMain}
-				currentPath={currentPath}
-				lang={lang}
-				client:load
-			/>
+			<MobileNav isMain={isMain} currentPath={currentPath} lang={lang} />
 			<div class='h-8'>
-				<LanguageNav
-					currentPath={currentPath}
-					isMain={isMain}
-					lang={lang}
-					client:load
-				/>
+				<LanguageNav currentPath={currentPath} isMain={isMain} lang={lang} />
 			</div>
 		</div>
 	</div>
 </header>
 
-<script>
+<!-- <script>
 	window.addEventListener('scroll', () => {
 		const header = document.querySelector('header')
 		if (window.scrollY > 40) {
-			header?.classList.add('bg-custom-darker-green')
-			header?.classList.remove('bg-transparent')
+			header?.classList.add('bg-custom-accent/90')
+			header?.classList.remove('bg-custom-accent/60')
 		} else {
-			header?.classList.add('bg-transparent')
-			header?.classList.remove('bg-custom-darker-green')
+			header?.classList.add('bg-custom-accent/60')
+			header?.classList.remove('bg-custom-accent/90')
 		}
 	})
-</script>
+</script> -->

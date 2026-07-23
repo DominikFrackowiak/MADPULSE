@@ -1,0 +1,24 @@
+---
+const {
+	street,
+	closeTo,
+	metro,
+}: {
+	street: string
+	closeTo: string
+	metro: string
+} = Astro.props
+---
+
+<div class='flex flex-col gap-2 items-center lg:items-end w-full'>
+	<p class='flex items-start text-almost-black font-open-sans justify-end'>
+		<span class='flex flex-col items-center lg:items-end'>
+			<span class='text-end'>{street}</span>
+			<span>{closeTo}</span>
+		</span>
+	</p>
+
+	<p class='flex items-center text-almost-black font-open-sans justify-end'>
+		<span>{metro}</span>
+	</p>
+</div>

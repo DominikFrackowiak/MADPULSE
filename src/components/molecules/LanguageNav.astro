@@ -1,0 +1,59 @@
+---
+import { cn } from '../../../utils/twMerge'
+import Dropdown from '../atoms/Dropdown.astro'
+import GlobeIcon from '../atoms/GlobeIcon.astro'
+
+const languages = [
+	{
+		language: 'ES',
+		id: 'es',
+	},
+	{
+		language: 'EN',
+		id: 'en',
+	},
+] as const
+
+const {
+	isMain,
+	lang,
+	currentPath,
+}: {
+	isMain: boolean
+	lang: string
+	currentPath: string
+} = Astro.props
+
+const getPathForLang = (targetLang: string, currentPath: string) => {
+	const segments = currentPath.split('/')
+	segments[1] = targetLang
+	return segments.join('/')
+}
+---
+
+<Dropdown
+	label='Language'
+	buttonClassName='cursor-pointer pt-0.5 text-white'
+	contentClassName='!px-3'
+>
+	<Fragment slot='trigger'>
+		<GlobeIcon className='h-7 w-7' />
+	</Fragment>
+	{
+		languages.map(l => (
+			<a
+				href={getPathForLang(l.id, currentPath)}
+				class={cn(
+					'cursor-pointer pb-0 font-open-sans !text-xs !3xl:text-md',
+					l.id === lang ? 'border-b-2' : '',
+					isMain && l.id === lang
+						? 'border-custom-green'
+						: 'border-custom-blue'
+				)}
+				role='menuitem'
+			>
+				{l.language}
+			</a>
+		))
+	}
+</Dropdown>

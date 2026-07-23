@@ -1,0 +1,28 @@
+---
+import {
+	getLangFromUrl,
+	useTranslations,
+	type TranslationKey,
+} from '../../i18n/utils'
+import Quote from './Quote.astro'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+interface Props {
+	text: string
+	description?: TranslationKey
+}
+
+const { text, description = 'main.description' } = Astro.props
+---
+
+<div class='w-full max-w-screen-2xl px-4! lg:px-10!'>
+	<div class='flex flex-col items-center gap-10 font-open-sans centerElement'>
+		<Quote text={text} />
+		<div class='h-[1px] w-1/5 bg-custom-blue'></div>
+		<p class='font-open-sans text-almost-black text-center'>
+			{t(description)}
+		</p>
+	</div>
+</div>
