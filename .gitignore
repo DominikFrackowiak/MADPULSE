@@ -12,6 +12,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+codex-dev*.log
+
+# local browser profiles
+.chrome-codex/
 
 # environment variables
 .env
