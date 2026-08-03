@@ -1,0 +1,20 @@
+---
+import { cn } from '../../../utils/twMerge'
+interface Props {
+	heading: string
+	customClass?: string
+	as?: 'h1' | 'h2' | 'h3' | 'h4'
+}
+const { heading, customClass, as = 'h2' } = Astro.props
+
+const Element = as
+---
+
+<Element
+	class={cn(
+		'text-3xl lg:text-7-3xl font-newake font-extrabold inline-block uppercase text-custom-accent-200/70',
+		customClass
+	)}
+>
+	{heading}
+</Element>

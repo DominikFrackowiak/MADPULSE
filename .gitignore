@@ -12,6 +12,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+codex-dev*.log
+
+# local browser profiles
+.chrome-codex/
 
 # environment variables
 .env
@@ -22,3 +26,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# AI TOOLS
+.chrome-codex/
+codex-dev.err.log
+codex-dev.log

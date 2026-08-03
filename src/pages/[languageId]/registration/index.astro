@@ -1,7 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro'
-import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
-import SectionHeadingType3 from '@/components/atoms/SectionHeadingType3.astro'
+import Heading from '@/components/atoms/Heading.astro'
+import PriceInfoCard from '@/components/molecules/PriceInfoCard.astro'
+import ContactInfoCard from '@/components/molecules/ContactInfoCard.astro'
+
+
 
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
 
@@ -14,44 +17,69 @@ const t = useTranslations(lang)
 ---
 
 <Layout title={t('registration.title')}>
-	<div class='centerElement verticalDistance'>
-		<SectionHeadingType2
+	<div class='flex flex-col wrapper text-custom-accent-200/70! gap-8 lg:gap-16'>
+		<Heading
 			heading={t('registration.title')}
-			customClass='items-center lg:items-start'
+			customClass='items-center lg:items-start uppercase'
 		/>
-		<SectionHeadingType3
-			heading={t('registration.earlyBirds.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<span class='block text-center lg:text-left'
-			>{t('registration.earlyBirds.price')}</span
-		>
-		<SectionHeadingType3
-			heading={t('registration.regularPrice.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<span class='block text-center lg:text-left'
-			>{t('registration.regularPrice.price')}</span
-		>
-		<SectionHeadingType3
-			heading={t('registration.howToBook.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<ul class='flex flex-col gap-1'>
-			<li
-				class='text-center lg:text-left'
-				set:html={t('registration.howToBook.step1')}
+		<div class='flex flex-col gap-4'>
+			<Heading
+				heading={t('registration.price')}
+				customClass='text-2xl! items-center lg:items-start uppercase'
 			/>
-			<li class='text-center lg:text-left'>
-				{t('registration.howToBook.step2')}
-			</li>
-		</ul>
-		<SectionHeadingType3
-			heading={t('registration.cancellationPolicy.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<span class='block text-center lg:text-left'
-			>{t('registration.cancellationPolicy.text')}</span
-		>
+			<section class='flex flex-col lg:flex-row justify-between gap-4'>
+				<PriceInfoCard
+					title={t('registration.earlyBirds.title')}
+					amount={t('registration.earlyBirds.price.amount')}
+					layout='left'
+					details={t('registration.earlyBirds.price.details')}
+				/>
+				<PriceInfoCard
+					title={t('registration.regularPrice.title')}
+					amount={t('registration.regularPrice.price.amount')}
+					layout='right'
+					details={t('registration.regularPrice.price.details')}
+					isFeatured
+				/>
+			</section>
+		</div>
+		<div class='flex flex-col gap-4'>
+			<Heading
+				heading={t('registration.howToBook.title')}
+				customClass='text-2xl! items-center lg:items-start uppercase'
+			/>
+			<ul class='flex flex-col gap-4'>
+				<li
+					class='text-left text-lg lg:text-xl'
+					set:html={t('registration.howToBook.step1')}
+				/>
+				<div class='flex flex-col gap-4 py-4'>
+					<ContactInfoCard
+						name='Marta Wrzesińska'
+						email='martawrze@gmail.com'
+						phoneNumber='+34 647 22 90 01'
+						whatsAppUrl='https://wa.me/34647229001'
+					/>
+					<ContactInfoCard
+						name='Jesús Alonso'
+						email='jesusalonsodanzaci@gmail.com'
+						phoneNumber='+34 635 68 33 94'
+						whatsAppUrl='https://wa.me/34635683394'
+					/>
+				</div>
+				<li class='text-left text-lg lg:text-xl'>
+					{t('registration.howToBook.step2')}
+				</li>
+			</ul>
+		</div>
+		<div class='flex flex-col gap-4'>
+			<Heading
+				heading={t('registration.cancellationPolicy.title')}
+				customClass='text-2xl! items-center lg:items-start uppercase '
+			/>
+			<span class='block text-left text-lg lg:text-xl'
+				>{t('registration.cancellationPolicy.text')}</span
+			>
+		</div>
 	</div>
 </Layout>

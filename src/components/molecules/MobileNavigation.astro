@@ -1,0 +1,43 @@
+---
+import { mobileNavItems } from '../../../constants/constants'
+import { useTranslations, type Lang } from '../../i18n/utils'
+import { cn } from '../../../utils/twMerge'
+import Dropdown from '../atoms/Dropdown.astro'
+import HamburgerIcon from '../atoms/HamburgerIcon.astro'
+
+interface Props {
+	lang: Lang
+	currentPath: string
+	isMain: boolean
+	isHeader?: boolean
+}
+
+const { lang, isMain } = Astro.props
+const t = useTranslations(lang)
+---
+
+<nav class='block xl:hidden'>
+	<Dropdown
+		label='Menu'
+		buttonClassName='font-open-sans text-md 4xl:text-xl text-white text-2xl'
+		contentClassName='!w-[150px] gap-6'
+	>
+		<Fragment slot='trigger'>
+			<HamburgerIcon className='h-6 w-6' />
+		</Fragment>
+		{
+			mobileNavItems.map(item => (
+				<a
+					class={cn(
+						'pb-0 font-open-sans !text-xs !3xl:text-md border-b-1',
+						isMain ? 'border-custom-green' : 'border-custom-blue'
+					)}
+					href={`/${lang}/${item.url}`}
+					role='menuitem'
+				>
+					{t(item.title)}
+				</a>
+			))
+		}
+	</Dropdown>
+</nav>

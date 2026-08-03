@@ -1,0 +1,95 @@
+---
+import Heading from '../atoms/Heading.astro'
+import CloseIcon from '../atoms/CloseIcon.astro'
+import { Image } from 'astro:assets'
+import type { galleryYears } from '../../../constants/gallery'
+
+import { getLangFromUrl, useTranslations } from '../../i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+type GalleryData = (typeof galleryYears)[number]
+type GalleryImage = GalleryData['images'][number]
+
+interface Props {
+	gallery: GalleryData
+}
+
+const { gallery } = Astro.props
+---
+
+<article
+	class='flex flex-col wrapper text-custom-accent-200/70! gap-8 lg:gap-16'
+>
+	<div class='flex flex-col gap-4'>
+		<Heading heading={`MADPULSE ${gallery.year}`} />
+		<p class='text-custom-accent-200 w-full lg:max-w-2/3'>{t('gallery.description')}</p>
+	</div>
+	<section class='grid grid-cols-1 lg:grid-cols-3 gap-6'>
+		{
+			gallery.images.map((image: GalleryImage) => (
+				<Image
+					src={image.src}
+					alt={image.alt}
+					data-full-src={image.src.src}
+					class='gallery-img cursor-pointer min-h-[314px] object-cover'
+				/>
+			))
+		}
+	</section>
+	<div
+		class='image-wrapper hidden justify-center items-start lg:items-center fixed top-0 bottom-0 left-0 right-0 bg-white/70 z-60 cursor-pointer text-custom-accent!'
+	>
+		<button
+			type='button'
+			aria-label='Close image preview'
+			class='close-image cursor-pointer absolute top-8 right-8 z-1 flex h-10 w-10 items-center justify-center rounded-full bg-white text-custom-accent'
+		>
+			<CloseIcon className='h-6 w-6' />
+		</button>
+		<img src='' alt='' class='mt-40 lg:mt-0 single-image max-h-[95vh] w-auto' />
+	</div>
+</article>
+
+<script>
+	const setupGalleryPreview = () => {
+		const imgWrapper = document.querySelector<HTMLDivElement>('.image-wrapper')
+		const images = document.querySelectorAll<HTMLImageElement>('.gallery-img')
+		const singleImage =
+			document.querySelector<HTMLImageElement>('.single-image')
+
+		if (!imgWrapper || !singleImage) return
+
+		images.forEach(image => {
+			if (image.dataset.galleryPreviewBound === 'true') return
+
+			image.dataset.galleryPreviewBound = 'true'
+			image.addEventListener(
+				'click',
+				() => {
+					const fullSrc = image.dataset.fullSrc
+
+					if (!fullSrc) return
+
+					singleImage.src = fullSrc
+					singleImage.alt = image.alt
+					imgWrapper.classList.remove('hidden')
+					imgWrapper.classList.add('flex')
+				},
+				{ once: false }
+			)
+		})
+
+		if (imgWrapper.dataset.galleryPreviewBound === 'true') return
+
+		imgWrapper.dataset.galleryPreviewBound = 'true'
+		imgWrapper.addEventListener('click', () => {
+			imgWrapper.classList.remove('flex')
+			imgWrapper.classList.add('hidden')
+		})
+	}
+
+	setupGalleryPreview()
+	document.addEventListener('astro:page-load', setupGalleryPreview)
+</script>

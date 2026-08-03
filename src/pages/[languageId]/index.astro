@@ -1,19 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import Hero from '../../components/molecules/Hero.astro'
-import QuoteMain from '../../components/molecules/QuoteMain.astro'
-
-import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 
 export async function getStaticPaths() {
 	return [{ params: { languageId: 'es' } }, { params: { languageId: 'en' } }]
 }
-
-const lang = getLangFromUrl(Astro.url)
-const t = useTranslations(lang)
 ---
 
 <Layout>
 	<Hero />
-	<QuoteMain />
+	
 </Layout>

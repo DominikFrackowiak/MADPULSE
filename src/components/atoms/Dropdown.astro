@@ -1,0 +1,113 @@
+---
+import { cn } from '../../../utils/twMerge'
+
+interface Props {
+	wrapperClassName?: string
+	buttonClassName?: string
+	contentClassName?: string
+	label?: string
+}
+
+const { wrapperClassName, buttonClassName, contentClassName, label } = Astro.props
+---
+
+<div class={cn('relative inline-flex flex-col items-center', wrapperClassName)} data-dropdown>
+	<button
+		aria-expanded='false'
+		aria-haspopup='menu'
+		aria-label={label}
+		class={cn('border-none bg-transparent p-0 cursor-pointer', buttonClassName)}
+		type='button'
+		data-dropdown-trigger
+	>
+		<slot name='trigger' />
+	</button>
+	<div
+		class={cn(
+			'absolute right-0 top-full mt-3 hidden flex-col items-center gap-4 bg-white text-almost-black !py-5 !px-4 rounded-2xl shadow-xl z-50',
+			contentClassName
+		)}
+		data-dropdown-content
+		role='menu'
+	>
+		<slot />
+	</div>
+</div>
+
+<script>
+	const openedClass = 'flex'
+	const closedClass = 'hidden'
+
+	function setDropdownOpen(content: Element, trigger: Element, isOpen: boolean) {
+		content.classList.toggle(closedClass, !isOpen)
+		content.classList.toggle(openedClass, isOpen)
+		trigger.setAttribute('aria-expanded', String(isOpen))
+	}
+
+	function closeDropdowns() {
+		document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+			const trigger = dropdown.querySelector('[data-dropdown-trigger]')
+			const content = dropdown.querySelector('[data-dropdown-content]')
+
+			if (trigger instanceof HTMLElement && content instanceof HTMLElement) {
+				setDropdownOpen(content, trigger, false)
+			}
+		})
+	}
+
+	function initDropdowns() {
+		const dropdowns = document.querySelectorAll('[data-dropdown]')
+
+		dropdowns.forEach(dropdown => {
+			if (!(dropdown instanceof HTMLElement) || dropdown.dataset.bound === 'true') {
+				return
+			}
+
+			const trigger = dropdown.querySelector('[data-dropdown-trigger]')
+			const content = dropdown.querySelector('[data-dropdown-content]')
+
+			if (!(trigger instanceof HTMLElement) || !(content instanceof HTMLElement)) {
+				return
+			}
+
+			dropdown.dataset.bound = 'true'
+
+			trigger.addEventListener('click', event => {
+				event.stopPropagation()
+
+				const isOpening = content.classList.contains(closedClass)
+				closeDropdowns()
+				setDropdownOpen(content, trigger, isOpening)
+			})
+
+			content.querySelectorAll('a').forEach(link => {
+				link.addEventListener('click', closeDropdowns)
+			})
+		})
+	}
+
+	function closeDropdownsOnOutsideClick(event: MouseEvent) {
+		if (event.target instanceof Element && event.target.closest('[data-dropdown]')) {
+			return
+		}
+
+		closeDropdowns()
+	}
+
+	if (document.documentElement.dataset.dropdownsGlobalBound !== 'true') {
+		document.documentElement.dataset.dropdownsGlobalBound = 'true'
+
+		document.addEventListener('click', closeDropdownsOnOutsideClick)
+
+		document.addEventListener('keydown', event => {
+			if (event.key === 'Escape') {
+				closeDropdowns()
+			}
+		})
+
+		document.addEventListener('astro:before-swap', closeDropdowns)
+		document.addEventListener('astro:page-load', initDropdowns)
+	}
+
+	initDropdowns()
+</script>

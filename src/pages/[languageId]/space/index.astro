@@ -1,11 +1,11 @@
 ---
 import Layout from '../../../layouts/Layout.astro'
-import { CustomCarousel } from '../../../components/organisms/Carousel'
-import Address from '@/components/molecules/Address'
+import Address from '@/components/molecules/Address.astro'
+import Heading from '@/components/atoms/Heading.astro'
+import { Image } from 'astro:assets'
 
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
-import SectionHeadingType2 from '@/components/atoms/SectionHeadingType2.astro'
-import { PiCaretCircleDown } from 'react-icons/pi'
+import { thePlaceGallery } from '../../../../constants/gallery'
 
 export async function getStaticPaths() {
 	return [{ params: { languageId: 'es' } }, { params: { languageId: 'en' } }]
@@ -15,81 +15,50 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<Layout title={t('space.title')} heading=''>
-	<div class='centerElement verticalDistance'>
-		<SectionHeadingType2
-			heading={t('space.title')}
-			customClass='items-center lg:items-start'
-		/>
-		<div class='flex flex-col'>
-			<ul class='flex flex-col gap-1 items-center lg:items-start'>
-				<li class='flex gap-3 items-center text-almost-black font-open-sans'>
-					<span class='text-custom-darker-green text-xl'
-						><PiCaretCircleDown /></span
-					>{t('space.features.size')}
-				</li>
-				<li class='flex gap-3 items-center text-almost-black font-open-sans'>
-					<span class='text-custom-darker-green text-xl'
-						><PiCaretCircleDown /></span
-					>
-					{t('space.features.floor')}
-				</li>
-			</ul>
-
-			<CustomCarousel client:load />
-
-			<SectionHeadingType2
-				heading={t('space.howToGet.title')}
-				customClass='items-center lg:items-start'
-			/>
-			<div class='flex flex-col lg:flex-row'>
-				<div
-					class='hidden lg:flex flex-col w-full lg:w-1/2 gap-4 order-1 xl:order-0'
+<Layout title={t('space.title')} heading='test'>
+	<div class='flex flex-col wrapper text-custom-accent-200/70! gap-8 lg:gap-16'>
+		<div class='flex flex-col gap-4'>
+			<Heading heading={t('space.title')} />
+			<div class='flex flex-col gap-0'>
+				<span class='text-lg lg:text-xl leading-[1.6]'>
+					{t('space.description')}
+				</span>
+				<a
+					href='https://www.theplacedancestudiomadrid.com'
+					target='_blank'
+					class='text-lg lg:text-xl leading-[1.6] hover:text-custom-accent-200/80'
+					>www.theplacedancestudiomadrid.com</a
 				>
-					<iframe
-						width='300px'
-						height='200px'
-						src='https://www.openstreetmap.org/export/embed.html?bbox=-3.6108273267745976%2C40.43595236595643%2C-3.6058062314987187%2C40.4385654527029&layer=mapnik&marker=40.4372581586365%2C-3.6083176500000036'
-						style='; border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);'
-					></iframe>
-				</div>
-				<div
-					class='flex lg:hidden flex-col w-full lg:w-1/2 gap-4 order-1 xl:order-0'
-				>
-					<iframe
-						width='100%'
-						height='100%'
-						src='https://www.openstreetmap.org/export/embed.html?bbox=-3.6108273267745976%2C40.43595236595643%2C-3.6058062314987187%2C40.4385654527029&layer=mapnik&marker=40.4372581586365%2C-3.6083176500000036'
-						style='; border-radius: 10px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);'
-					></iframe>
-				</div>
-				<div
-					class='flex flex-col gap-10 items-center lg:items-end order-0 flex-1'
-				>
-					<Address
-						client:load
-						street={t('address.street')}
-						closeTo={t('address.near')}
-						metro={t('address.metro')}
-					/>
-					<button
-						class='mt-2 font-open-sans font-bold flex justify-center items-center hover:opacity-80
- bg-custom-darker-green
-  text-sm
-  text-white
-  rounded-4xl
-  px-4
-  py-2
-  transition-opacity
-  transition-discrete
-  cursor-pointer
-  shadow-2xl my-10'
-						><a href=`https://maps.app.goo.gl/x1rJdbZ28WU45SCv6` target='_blank'
-							>{t('space.button.openInMaps')}</a
-						></button
-					>
-				</div>
 			</div>
+		</div>
+
+		<section class='grid hrid-cols-1 lg:grid-cols-3 gap-4'>
+			{
+				thePlaceGallery.map(image => (
+					<Image
+						src={image.src}
+						alt={image.alt}
+						data-full-src={image.src.src}
+						class='gallery-img cursor-pointer min-h-[314px] object-cover'
+					/>
+				))
+			}
+		</section>
+
+		<div class='flex flex-col lg:flex-row justify-between w-full gap-4'>
+			<iframe
+				src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.738539497904!2d-3.6081518000000012!3d40.4367881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422f9539dafdc1%3A0x2df1b2b80e0d47ad!2sThe%20Place%20Dance%20Studio%20Madrid!5e0!3m2!1spl!2ses!4v1784814371646!5m2!1spl!2ses'
+				style='border:0;'
+				width='100%'
+				allowfullscreen=''
+				loading='lazy'
+				referrerpolicy='strict-origin-when-cross-origin'></iframe>
+
+			<Address
+				street={t('address.street')}
+				closeTo={t('address.near')}
+				metro={t('address.metro')}
+			/>
 		</div>
 	</div>
 </Layout>
