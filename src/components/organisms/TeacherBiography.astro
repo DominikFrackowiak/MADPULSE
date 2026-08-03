@@ -1,5 +1,5 @@
 ---
-import { cn } from 'utils/twMerge'
+import { cn } from '@/lib/utils'
 import Heading from '../atoms/Heading.astro'
 import type { teacherPages } from '../../../constants/constants'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
@@ -8,14 +8,13 @@ type TeacherPageData = (typeof teacherPages)[number]
 
 interface Props {
 	teacher: TeacherPageData
-	teacherTitle: string
 }
 
-const { teacher, teacherTitle } = Astro.props
+const { teacher } = Astro.props
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
-const getParagraphs = (text: string) =>
+const getParagraphs = (text: string): string[] =>
 	text
 		.split(/\n\s*\n/)
 		.map(paragraph => paragraph.trim())
@@ -24,20 +23,20 @@ const getParagraphs = (text: string) =>
 
 <div
 	class={cn(
-		'flex flex-col gap-8 lg:gap-16 w-full lg:w-1/2 bg-custom-accent/80 py-8 px-4! lg:px-8! lg:py-8',
-		teacher.workshopSectionWidth
+		'flex flex-col gap-8 lg:gap-16 w-full pt-2.5 py-8 lg:py-16 px-4 bg-white/90',
+		teacher.biographySectionWidth
 	)}
 >
-	<div class='flex flex-col gap-4 text-white'>
+	<div class='flex flex-col gap-4'>
 		<Heading
-			heading={teacherTitle}
+			heading={teacher.name}
 			customClass={cn(
-				'self-start items-start text-white z-3 bg-custom  uppercase '
+				'self-start items-start z-3 bg-custom text-custom-accent-200/70 uppercase'
 			)}
 		/>
 		{
-			getParagraphs(t(teacher.description1)).map(paragraph => (
-				<p>{paragraph}</p>
+			getParagraphs(t(teacher.description2)).map(paragraph => (
+				<p class='text-custom-accent-200'>{paragraph}</p>
 			))
 		}
 	</div>
