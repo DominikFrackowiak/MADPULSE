@@ -10,13 +10,11 @@ interface Props {
 }
 
 const { teacher, teacherTitle } = Astro.props
-
-
 ---
 
 <div
 	class={cn(
-		'relative flex justify-center w-full lg:max-h-[500px] self-stretch bg-cover bg-no-repeat shadow-md -mt-8 z-1',
+		'relative flex justify-center w-fullmax-h-[500px] self-stretch bg-cover bg-no-repeat shadow-md -mt-8 z-1',
 		teacher.bgPosition
 	)}
 	style={`background-image: url('${teacher.imageSrc}')`}

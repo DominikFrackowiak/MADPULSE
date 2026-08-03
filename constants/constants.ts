@@ -184,7 +184,7 @@ export const teacherPages = [
 		imageSrc: '/images/teachers/jesus-cropped.webp',
 		isImageToTheLeft: false,
 		// bgPosition: 'bg-[position:65%_40%] lg:bg-[position:center_-200px]',
-		bgPosition: 'bg-top',
+		bgPosition: 'bg-bottom-left lg:bg-top',
 		biographySectionWidth: 'lg:w-[43%]',
 		workshopSectionWidth: 'lg:w-[53%]',
 	},
