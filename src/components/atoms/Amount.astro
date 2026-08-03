@@ -12,7 +12,11 @@ const { text, className, as = 'span' } = Astro.props as Props
 const Element = as
 ---
 
-<Element class={cn(className)}>
+<Element
+	class={cn(
+		'text-4xl lg:text-7-4xl font-newake font-extrabold inline-block uppercase text-white',
+		className
+	)}
+>
 	{text}
 </Element>
-
