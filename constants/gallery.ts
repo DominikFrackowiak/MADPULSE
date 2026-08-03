@@ -37,3 +37,13 @@ export const galleryYears = [
 		images: gallery2025Images,
 	}
 ] as const
+
+export const thePlaceGallery = createGalleryImages(
+	import.meta.glob<{ default: ImageMetadata }>('../src/assets/the-place/*.{jpg,jpeg,png,webp,avif}', {
+		eager: true,
+	}),
+	'The Place'
+)
+
+
+
