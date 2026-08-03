@@ -19,12 +19,13 @@ export const ui = {
 		'nav.space': 'Space',
 		'nav.registration': 'Registration',
 		'nav.gallery': 'Gallery',
-		'hero.dates': '29 30 31 DECEMBER',
-		'hero.description': "NEW YEAR'S CONTACT IMPRO DANCE EVENT",
+		'hero.dates': '5, 6, 7 DECEMBER',
+		'hero.description': "CONTACT IMPRO DANCE EVENT",
 		'hero.CTA': 'Register now',
-		'main.quote': "Touch doesn't say what to do. Touch says: I'm with you.",
+		'main.quote': "You've been swimming in gravity since the day you were born. Every cell knows where down is.",
 		'main.description':
-			'We’re excited to present a special Contact Dance gathering, created with care and dedication for those who are part of this practice. In this edition, we’re bringing together teachers and facilitators from Madrid and surrounding areas — our close-knit community — to share a space of learning, connection, and celebration. We’ll offer 3-hour workshops led by Carmen Alcalde, Lucía Sánchez, Sergio Palomares, Cata Mahecha, Marta Wrzesinska, and Jesús Alonso, with the aim of deepening into the technique from different perspectives. There will also be open jams to integrate what we’ve explored in a shared space of enjoyment and discovery. We also want to celebrate the end of the year dancing together. A space to explore, share, and celebrate. We’ll see you on the dance floor.',
+			"We are delighted to present the second edition of Mad Pulse, a special Contact Improvisation gathering, created with care and dedication for everyone who is part of this practice. This edition will take place over the December holiday weekend in Madrid.Once again, we will come together with teachers and friends from Madrid and the surrounding area—our local community—to share a space for learning, connection, and a deep practice of Contact Improvisation. The program features 3-hour workshops led by Carmen Alcalde, Lucía Sánchez, Sergio Palomares, Cata Mahecha, Marta Wrzesinska, and Jesús Alonso, offering the opportunity to deepen your practice through a variety of approaches and perspectives.There will also be jams where participants can integrate what they have explored in the workshops in an atmosphere of shared exploration and enjoyment. We'll see you on the dance floor.",
+		'schedule.welcome': 'WELCOME / SCHEDULE',
 		'schedule.title': 'Schedule',
 		'calendar.days.saturday': 'Saturday 5 Dic',
 		'calendar.days.sunday': 'Sunday 6 Dic',
@@ -49,11 +50,14 @@ export const ui = {
 		'calendar.teachers.jesusAlonso': 'Jesús Alonso',
 
 		'registration.title': 'Registration',
+		'registration.price': 'Prices',
 		'registration.earlyBirds.title': 'Early Birds',
-		'registration.earlyBirds.price':
-			'160 € (booking your spot until October 15)',
+		'registration.earlyBirds.price.amount':
+			'180 €',
+		'registration.earlyBirds.price.details':
+			'(booking your spot until October 1)',
 		'registration.regularPrice.title': 'Regular Price',
-		'registration.regularPrice.price': '190 € (after October 15)',
+		'registration.regularPrice.price': '215 € (after October 1)',
 		'registration.howToBook.title': 'How to Book',
 		'registration.howToBook.step1':
 			"1. Contact us to make sure you are on time, since the capacity is limited, and we send to you registration form: Marta: <a href=\"mailto:wrzemarta@gmail.com\"><span class='font-bold text-custom-blue font-open-sans inline-block'>wrzemarta@gmail.com</span></a> <a aria-label='Chat on WhatsApp' href='https://wa.me/34647229001' class='font-semibold text-almost-black font-open-sans inline-block'>+34647229001</a> or Jesús: <a href=\"mailto:jesusalonsodanzaci@gmail.com\"><span class='font-bold text-custom-blue font-open-sans inline-block '>jesusalonsodanzaci@gmail.com</span></a> <a aria-label='Chat on WhatsApp' href='https://wa.me/34635683394' class='font-semibold text-almost-black font-open-sans inline-block'>+34635683394</a>",
@@ -61,8 +65,9 @@ export const ui = {
 			'2. Confirm your booking by sending a deposit of €70 via Bizum/transfer/cash/PayPal. We will provide you with the account details once you have contacted us.',
 		'registration.cancellationPolicy.title': 'Cancellation Policy:',
 		'registration.cancellationPolicy.text':
-			'If you are ultimately unable to attend the event and notify us in advance (before December 1), we will refund your money. If you cancel your booking after December 1, the deposit will not be refunded, but you may find another person interested in taking your place.',
+			'If you are unable to attend the event and notify us before November 1, you will receive a full refund. Cancellations made on or after November 1 are not eligible for a refund of the deposit. However, you may transfer your reservation by finding another participant to take your place.',
 		'space.title': 'The Place Dance Studio',
+		'space.description': 'Located in the heart of Canillejas, this 220 m² space is dedicated to dance and artistic creation',
 		'space.features.size': '220 m² space',
 		'space.features.floor': 'Equipped with linoleum',
 		'space.howToGet.title': 'How to Get There',
@@ -72,6 +77,7 @@ export const ui = {
 		'address.metro': 'Las Musas Metro',
 
 		'teachers.carmen-alcalde.title': 'PLAYING SERIOUSLY',
+		'teachers.carmen-alcalde.quote': 'What happens when play stops being superficial and becomes a form of radical presence?',
 		'teachers.carmen-alcalde.text1': `
 			What happens when play stops being superficial and becomes a form of radical presence?
 
@@ -102,7 +108,8 @@ export const ui = {
 			Since 2017 I have co-facilitated with Lucía Sánchez the project Espacios ( ) between life and dance, co-organized the Encuentro Danzas Magas (10 editions) with her and Ernes Novales, and the CI Festival Inmersiones, together with Lucía Sánchez, Diana Bonilla, and Leilani Weis.
 		`.trim(),
 
-		'teachers.catalina-mahecha.title': 'TIMING THE ART OF SYNCHRONY in CONTACT IMPROVISATION',
+		'teachers.catalina-mahecha.title': 'TIMING: THE ART OF SYNCHRONY in CONTACT IMPROVISATION',
+		'teachers.catalina-mahecha.quote': 'Recognizing these forces and how we relate to them gives us the possibility of using them to our advantage.',
 		'teachers.catalina-mahecha.text1': `
 			In this class, we train the ability to perceive "the right moment," cultivating attention and presence so we can move together through the journey of shared weight, moving together with the forces of biomechanics.
 
@@ -126,6 +133,7 @@ export const ui = {
 		`.trim(),
 
 		'teachers.marta-wrzesinska.title': 'Toolbox',
+		'teachers.marta-wrzesinska.quote': 'How can a simple point of contact become a conversation?',
 		'teachers.marta-wrzesinska.text1': `
 			How does a dance begin?
 
@@ -157,6 +165,7 @@ export const ui = {
 		`.trim(),
 
 		'teachers.jesus-alonso.title': 'Permeable Tissues',
+		'teachers.jesus-alonso.quote': 'An encounter in which the body does not react from habit or automatism, but from a subtle, open presence truly attuned to the present moment.',
 		'teachers.jesus-alonso.text1': `
 			A somatic research space focused on the opening, tuning, and attunement of our own bodies as a fundamental preparation for Contact Improvisation. The workshop proposes a conscious practice of softening and relaxing the tissues, removing the noise and tensions that often mask our genuine sensations. By releasing these layers, the body becomes transparent and receptive, allowing perception to emerge directly and without filters. This tissue availability enables us to refine deep listening and sustain a genuine dialogue with the other; an encounter in which the body does not react from habit or automatism, but from a subtle, open presence truly attuned to the present moment.
 		`.trim(),
@@ -170,14 +179,9 @@ export const ui = {
 		`.trim(),
 
 		'teachers.lucia-sanchez.title': 'Gaze, Space and Movement',
+		'teachers.lucia-sanchez.quote': "I think of seeing. There’s more to it than meets the eye.I think of vision and movement. One gives rise to the other",
 		'teachers.lucia-sanchez.text1': `
-			"I think about the eyes. So many moving parts.
-
-			I think about seeing. It is more complicated than it seems.
-
-			I think about vision and movement. One gives rise to the other.
-
-			Dialogue comes to mind. That is how I experience their union. And how I experience my dancing: within my body and in partnership with people, things, and space."
+			"I think of the eyes. Many moving parts. I think of seeing. There’s more to it than meets the eye.I thinnk of vision and movement. One gives rise to the other. Dialogue comes to mind. That’s how I experience their wedding.And how I experience my dancing—within my body and in society with people, things, and space"
 
 			- Excerpt from the article "Before Your Eyes. Seeds of a Dance Practice" by Lisa Nelson
 
@@ -205,6 +209,7 @@ export const ui = {
 		`.trim(),
 
 		'teachers.sergio-palomares-vicente.title': 'FALL AFTER EINSTEIN',
+		'teachers.sergio-palomares-cicente.quote': 'The most beautiful experience we can have is the mysterious. It is the fundamental emotion that stands at the cradle of true art and true science.',
 		'teachers.sergio-palomares-vicente.text1': `
 			"The most beautiful experience we can have is the mysterious. It is the fundamental emotion that stands at the cradle of true art and true science." - Albert Einstein
 
@@ -230,6 +235,7 @@ export const ui = {
 
 			How to find the greatest softness in the most extreme, the greatest presence in the smallest.
 		`.trim(),
+		'gallery.description': "The photographs below were taken during MADPULSE 2025, held in Madrid on December 29–31, 2025. They capture moments from the workshops, jams, and shared experiences that made up last year's festival."
 	},
 
 	es: {
@@ -245,13 +251,14 @@ export const ui = {
 		'nav.space': 'Espacio',
 		'nav.registration': 'Inscripción',
 		'nav.gallery': 'Galería de fotos',
-		'hero.dates': '29 30 31 DICIEMBRE',
-		'hero.description': "NEW YEAR'S CONTACT IMPRO DANCE EVENT",
+		'hero.dates': '5, 6, 7 DICIEMBRE',
+		'hero.description': "CONTACT IMPRO DANCE EVENT",
 		'hero.CTA': 'RESERVA TU PLAZA',
-		'main.quote': 'El contacto no dice qué hacer. Dice: estoy contigo.',
+		'main.quote': 'Has estado nadando en la gravedad desde el día en que naciste. Cada célula sabe dónde está el suelo (dónde es abajo)',
 		'main.description':
-			'Estamos entusiasmados de presentar un encuentro especial de Danza Contact, creado con cariño y dedicación para quienes forman parte de esta práctica. En esta edición, reunimos a profesores y facilitadores de Madrid y alrededores —nuestra comunidad cercana— para compartir un espacio de aprendizaje, conexión y celebración. Ofreceremos workshops de 3 horas a cargo de Carmen Alcalde, Lucía Sánchez, Sergio Palomares, Cata Mahecha, Marta Wrzesinska y Jesús Alonso, con el objetivo de profundizar en la técnica desde diferentes enfoques. Además, habrá jams abiertas para integrar lo aprendido en un ambiente de exploración y disfrute compartido. Queremos también celebrar el cierre del año bailando juntos. Un espacio para investigar, compartir y celebrar. Te esperamos en la pista.',
+			'Estamos felices de presentar la segunda edición de Mad Pulse, un encuentro especial de Danza Contact Improvisation, creado con cariño y dedicación para quienes forman parte de esta práctica. Esta edición se celebrará durante el puente de diciembre en Madrid.Volveremos a reunirnos con  profesores y amigos  de Madrid y alrededores —nuestra comunidad cercana— para compartir un espacio de aprendizaje, conexión y práctica profunda de CI. Ofreceremos workshops de 3 horas a cargo de Carmen Alcalde, Lucía Sánchez, Sergio Palomares, Cata Mahecha, Marta Wrzesinska y Jesús Alonso, con el objetivo de profundizar en la técnica desde diferentes enfoques.Además, habrá jams para integrar lo aprendido en un ambiente de exploración y disfrute compartido. Te esperamos en la pista.',
 		'schedule.title': 'Programa',
+		'schedule.welcome': 'BIENVENID@S / PROGRAMA',
 		'calendar.days.saturday': 'Sábado 5 Dic',
 		'calendar.days.sunday': 'Domingo 6 Dic',
 		'calendar.days.monday': 'Lunes 7 Dic',
@@ -274,20 +281,25 @@ export const ui = {
 		'calendar.teachers.catalinaMahecha': 'Catalina Mahecha',
 		'calendar.teachers.jesusAlonso': 'Jesús Alonso',
 		'registration.title': 'Inscripción',
+		'registration.price': 'Precio',
 		'registration.earlyBirds.title': 'Early Birds',
-		'registration.earlyBirds.price':
-			'160 € (reservando tu plaza hasta 15 de octubre)',
+		'registration.earlyBirds.price.amount':
+			'180 €',
+		'registration.earlyBirds.price.details':
+			'(reservando tu plaza hasta 1 de octubre)',
 		'registration.regularPrice.title': 'Precio Regular',
-		'registration.regularPrice.price': '190€ (después del 15 de octubre)',
+		'registration.regularPrice.price.amount': '215 €',
+		'registration.regularPrice.price.details': '(después del 1 de octubre)',
 		'registration.howToBook.title': 'Cómo Reservar',
 		'registration.howToBook.step1':
-			"1. Contacta con nosotros para asegurarte de que estas a tiempo, ya que el aforo es límitado, y te enviaremos un formulario para registrarte: Marta: <a href=\"mailto:wrzemarta@gmail.com\"><span class='font-bold text-custom-blue font-open-sans inline-block'>wrzemarta@gmail.com</span></a> <a aria-label='Chat on WhatsApp' href='https://wa.me/34647229001' class='font-semibold text-almost-black font-open-sans inline-block'>+34647229001</a> o Jesús: <a href=\"mailto:jesusalonsodanzaci@gmail.com\"><span class='font-bold text-custom-blue font-open-sans inline-block '>jesusalonsodanzaci@gmail.com</span></a> <a aria-label='Chat on WhatsApp' href='https://wa.me/34635683394' class='font-semibold text-almost-black font-open-sans inline-block'>+34635683394</a>",
+			"1. Contacta con nosotros para asegurarte de que estas a tiempo, ya que el aforo es límitado, y te enviaremos un formulario para registrarte: ",
 		'registration.howToBook.step2':
 			'2. Confirma tu reserva mandando una señal de 70€ realizando bizum/tranferencia/efectivo/paypal. Te facilitaremos la información de número de la cuenta una vez has contactado con nosotros.',
 		'registration.cancellationPolicy.title': 'La Política de Cancelación:',
 		'registration.cancellationPolicy.text':
-			'Si finalmente no podrás participar en el evento y nos avisas con tiempo (antes del 1 de diciembre) te devolveremos el dinero. Si cancelas tu reserva después del día 1, el dinero de la señal no se devolverá, pero podrás buscar una persona interesada para tu plaza.',
+			'Si finalmente no podrás participar en el evento y nos avisas con tiempo (antes del 1 de noviembre) te devolveremos el dinero. Si cancelas tu reserva después del día 1, el dinero de la señal no se devolverá, pero podrás buscar una persona interesada para que cubra tu plaza.',
 		'space.title': 'The Place Dance Studio',
+		'space.description': 'Ubicado en pleno distrito de Canillejas, un espacio de 220mq dedicados a la danza y la creación',
 		'space.features.size': 'Espacio de 220 m2',
 		'space.features.floor': 'Dotado de linóleo',
 		'space.howToGet.title': 'Cómo Llegar',
@@ -297,6 +309,7 @@ export const ui = {
 		'address.metro': 'Metro Las Musas',
 
 		'teachers.carmen-alcalde.title': 'Jugar en serio',
+		'teachers.carmen-alcalde.quote': '¿Qué ocurre cuando el juego deja de ser superficial y se convierte en una forma de presencia radical?',
 		'teachers.carmen-alcalde.text1': `
 			¿Qué ocurre cuando el juego deja de ser superficial y se convierte en una forma de presencia radical?
 
@@ -329,8 +342,8 @@ export const ui = {
 			Desde 2017 co-facilito con Lucía Sánchez el proyecto Espacios ( ) entre la vida y la danza, co-organizo el Encuentro Danzas Magas (10 ediciones) con ella y Ernes Novales y el Festival de CI Inmersiones, junto con Lucía Sánchez, Diana Bonilla y Leilani Weis
 		`.trim(),
 
-		'teachers.catalina-mahecha.title': 'TIMING EL ARTE DE LA SINCRONÍA en el CONTACT IMPROVISACIÓN',
-	
+		'teachers.catalina-mahecha.title': 'TIMING: EL ARTE DE LA SINCRONÍA en el CONTACT IMPROVISACIÓN',
+		'teachers.catalina-mahecha.quote': 'Reconocer las fuerzas y cómo nos relacionamos con ellas, nos da la posibilidad de utilizarlas a nuestro favor.',
 		'teachers.catalina-mahecha.text1': `
 			En esta clase entrenamos la habilidad de observar "el momento justo", la atención y la presencia para ir junt@s en el viaje del peso compartido, ir junt@s con las fuerzas de la biomecánica.
 
@@ -366,7 +379,7 @@ export const ui = {
 		`.trim(),
 
 		'teachers.marta-wrzesinska.title': 'Toolbox',
-		
+		'teachers.marta-wrzesinska.quote': '¿Cómo un simple punto de contacto puede convertirse en una conversación?',
 		'teachers.marta-wrzesinska.text1': `
 			¿Cómo comienza una danza?
 
@@ -394,7 +407,7 @@ export const ui = {
 		`.trim(),
 
 		'teachers.jesus-alonso.title': 'Tejidos Permeables',
-	
+		'teachers.jesus-alonso.quote': 'Un encuentro donde el cuerpo no reacciona desde el hábito o el automatismo, sino desde una presencia sutil, abierta y verdaderamente sintonizada con el momento presente',
 		'teachers.jesus-alonso.text1': `
 			Un espacio de investigación somática enfocado en la apertura, la afinación y la entonación de nuestro propio cuerpo como preparación fundamental para el Contact Improvisación. El taller propone un trabajo consciente para ablandar y relajar los tejidos, eliminando el ruido y las tensiones que suelen enmascarar nuestras sensaciones reales. Al liberar estas capas, el cuerpo se vuelve transparente y receptivo, permitiendo que la percepción emerja de manera directa y sin filtros. Esta disponibilidad tisular es lo que nos permite afinar la escucha profunda y sostener un diálogo genuino con el otro; un encuentro donde el cuerpo no reacciona desde el hábito o el automatismo, sino desde una presencia sutil, abierta y verdaderamente sintonizada con el momento presente.
 		`.trim(),
@@ -412,7 +425,7 @@ export const ui = {
 		`.trim(),
 
 		'teachers.lucia-sanchez.title': 'MIRADA, ESPACIO Y MOVIMIENTO.',
-		
+		'teachers.lucia-sanchez.quote': 'Pienso en ver. Es más complicado de lo que parece. Pienso en la visión y el movimiento. Lo uno da lugar a lo otro.',
 		'teachers.lucia-sanchez.text1': `
 			"Pienso en los ojos. Muchas piezas móviles.
 
@@ -452,7 +465,7 @@ export const ui = {
 		`.trim(),
 
 		'teachers.sergio-palomares-vicente.title': 'FALL AFTER EINSTEIN',
-
+		'teachers.sergio-palomares-cicente.quote': 'La experiencia más hermosa que podemos tener es el misterio. Es la emoción fundamental que se encuentra en la cuna del verdadero arte y de la verdadera ciencia.',
 		'teachers.sergio-palomares-vicente.text1': `
 			"La experiencia más hermosa que podemos tener es el misterio. Es la emoción fundamental que se encuentra en la cuna del verdadero arte y de la verdadera ciencia." - Albert Einstein
 
@@ -478,5 +491,6 @@ export const ui = {
 
 			Cómo encontrar la mayor suavidad en lo más extremo, la mayor presencia en lo más pequeño.
 		`.trim(),
+		'gallery.description': 'Las fotografías que encontrarás a continuación fueron tomadas durante MADPULSE 2025, celebrado en Madrid del 29 al 31 de diciembre de 2025. Recogen momentos de los talleres, las jams y las experiencias compartidas que formaron parte de la edición anterior del festival.'
 	},
 } as const
