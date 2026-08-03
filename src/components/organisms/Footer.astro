@@ -3,11 +3,11 @@ import { getLangFromUrl } from '../../i18n/utils'
 
 const { isMain } = Astro.props
 import { cn } from 'utils/twMerge'
-import EnvelopeIcon from '../atoms/EnvelopeIcon.astro'
+import FacebookIcon from '../atoms/FacebookIcon.astro'
 import WhatsappIcon from '../atoms/WhatsappIcon.astro'
+import InstagramIcon from '../atoms/InstagramIcon.astro'
 
 const lang = getLangFromUrl(Astro.url)
-
 ---
 
 <footer
@@ -19,21 +19,40 @@ const lang = getLangFromUrl(Astro.url)
 	<div
 		class='flex w-full h-full max-w-screen-4xl mx-auto justify-between items-center gap-2 px-4 lg:px-10'
 	>
-		<div class='flex gap-3'>
-			<EnvelopeIcon email='wrzemarta@gmail.com' />
-
+		<div class='flex gap-4 lg:gap-3'>
+			<a
+				aria-label='Follow us on Facebook'
+				href='https://www.facebook.com/events/2625733644558709/'
+				class='text-2xl text-white'
+				target='_blank'
+			>
+				<FacebookIcon className='h-6 w-6' />
+			</a>
+			<a
+				aria-label='Follow us on Instagram'
+				target='_blank'
+				href='https://www.instagram.com/madpulse_ci'
+				class='text-2xl text-white'
+			>
+				<InstagramIcon className='h-6 w-6' />
+			</a>
 			<a
 				aria-label='Chat on WhatsApp'
 				href='https://wa.me/34635683394'
 				class='text-2xl text-white'
 			>
-				<WhatsappIcon className='h-7 w-7' />
+				<WhatsappIcon className='h-6 w-6' />
 			</a>
 		</div>
-		<a
-			class='!h-6'
-			href={`https://www.kraftweb.eu/?locale=${lang}`}
-			target='_blank'><img class='h-full' src='/images/Logo.svg' /></a
+		<div
+			class='flex flex-col lg:flex-row items-end lg:items-center gap-1 lg:gap-2'
 		>
+			<span class='text-white text-xs'>Designed and developed by:</span>
+			<a
+				class='!h-6'
+				href={`https://www.kraftweb.eu/?locale=${lang}`}
+				target='_blank'><img class='h-full' src='/images/Logo.svg' /></a
+			>
+		</div>
 	</div>
 </footer>

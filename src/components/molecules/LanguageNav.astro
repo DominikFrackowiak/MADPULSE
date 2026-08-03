@@ -3,26 +3,24 @@ import { cn } from '../../../utils/twMerge'
 import Dropdown from '../atoms/Dropdown.astro'
 import GlobeIcon from '../atoms/GlobeIcon.astro'
 
+interface Props {
+	isMain: boolean
+	lang: string
+	currentPath: string
+}
+
 const languages = [
 	{
-		language: 'ES',
+		language: 'ESPAÑOL',
 		id: 'es',
 	},
 	{
-		language: 'EN',
+		language: 'ENGLISH',
 		id: 'en',
 	},
 ] as const
 
-const {
-	isMain,
-	lang,
-	currentPath,
-}: {
-	isMain: boolean
-	lang: string
-	currentPath: string
-} = Astro.props
+const { isMain, lang, currentPath } = Astro.props
 
 const getPathForLang = (targetLang: string, currentPath: string) => {
 	const segments = currentPath.split('/')
@@ -33,11 +31,11 @@ const getPathForLang = (targetLang: string, currentPath: string) => {
 
 <Dropdown
 	label='Language'
-	buttonClassName='cursor-pointer pt-0.5 text-white'
-	contentClassName='!px-3'
+	buttonClassName='cursor-pointer text-white'
+	contentClassName='min-w-30'
 >
 	<Fragment slot='trigger'>
-		<GlobeIcon className='h-7 w-7' />
+		<GlobeIcon className='h-6 w-6' />
 	</Fragment>
 	{
 		languages.map(l => (
@@ -46,9 +44,7 @@ const getPathForLang = (targetLang: string, currentPath: string) => {
 				class={cn(
 					'cursor-pointer pb-0 font-open-sans !text-xs !3xl:text-md',
 					l.id === lang ? 'border-b-2' : '',
-					isMain && l.id === lang
-						? 'border-custom-green'
-						: 'border-custom-blue'
+					isMain && l.id === lang ? 'border-custom-green' : 'border-custom-blue'
 				)}
 				role='menuitem'
 			>

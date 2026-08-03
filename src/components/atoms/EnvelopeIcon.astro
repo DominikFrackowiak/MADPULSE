@@ -1,23 +1,21 @@
 ---
-interface Props{
-	email: string
+interface Props {
 	className?: string
 }
-const { email } = Astro.props
+
+const { className } = Astro.props
 ---
 
-<a href={`mailto:${email}`} class='text-white font-open-sans' aria-label={`Email ${email}`}>
-	<svg
-		aria-hidden='true'
-		class='h-6 w-6'
-		fill='none'
-		stroke='currentColor'
-		stroke-linecap='round'
-		stroke-linejoin='round'
-		stroke-width='1.6'
-		viewBox='0 0 24 24'
-	>
-		<path d='M4 6h16v12H4z'></path>
-		<path d='m4 7 8 6 8-6'></path>
-	</svg>
-</a>
+<svg
+	aria-hidden='true'
+	class={className}
+	fill='none'
+	stroke='currentColor'
+	stroke-linecap='round'
+	stroke-linejoin='round'
+	stroke-width='1.6'
+	viewBox='0 0 24 24'
+>
+	<path d='M4 6h16v12H4z'></path>
+	<path d='m4 7 8 6 8-6'></path>
+</svg>

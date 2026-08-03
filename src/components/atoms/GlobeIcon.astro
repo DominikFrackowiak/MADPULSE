@@ -1,21 +1,20 @@
 ---
-interface Props{
- className: string
+interface Props {
+	className: string
 }
 
-const {className} = Astro.props
+const { className } = Astro.props
 ---
 
 <svg
 	aria-hidden='true'
-	class='h-7 w-7'
 	fill='none'
 	stroke='currentColor'
 	stroke-linecap='round'
 	stroke-linejoin='round'
 	stroke-width='1.8'
 	viewBox='0 0 24 24'
- class={className}
+	class={className}
 >
 	<circle cx='12' cy='12' r='9'></circle>
 	<path d='M3 12h18'></path>

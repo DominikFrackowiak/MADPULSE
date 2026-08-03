@@ -36,7 +36,8 @@
 	--color-custom-accent: #6a6dcb;
 	--color-custom-accent-100: #eaa0e4;
 	--color-custom-accent-200: #370e46;
-	--text-7-3xl:32px;
+	--text-xl: 19px;
+	--text-7-3xl: 32px;
 	--text-7-4xl: 40px;
 	--text-7-4-5xl: 48px;
 	--text-7-5xl: 56px;
@@ -50,94 +51,27 @@
 	--breakpoint-4xl: 120rem; /* 1920px */
 }
 
-p {
+/* p {
 	@apply leading-8.5 text-lg;
-}
-
-.wavy-section {
-	background: linear-gradient(
-		135deg,
-		#7971cc 0%,
-		#7971cc 100%
-	); /* Kolor fali */
-	color: white;
-	/* padding: 60px 20px 120px 20px;  */
-
-	clip-path: polygon(
-		100% 100%,
-		0% 100%,
-		0% 86.46%,
-		2% 82.93%,
-		4% 78.16%,
-		6% 72.74%,
-		8% 67.35%,
-		10% 62.63%,
-		12% 59.16%,
-		14% 57.38%,
-		16% 57.49%,
-		18% 59.49%,
-		20% 63.13%,
-		22% 67.97%,
-		24% 73.4%,
-		26% 78.77%,
-		28% 83.42%,
-		30% 86.78%,
-		32% 88.43%,
-		34% 88.18%,
-		36% 86.05%,
-		38% 82.31%,
-		40% 77.41%,
-		42% 71.96%,
-		44% 66.62%,
-		46% 62.04%,
-		48% 58.8%,
-		50% 57.28%,
-		52% 57.67%,
-		54% 59.92%,
-		56% 63.76%,
-		58% 68.72%,
-		60% 74.19%,
-		62% 79.5%,
-		64% 83.99%,
-		66% 87.12%,
-		68% 88.51%,
-		70% 87.98%,
-		72% 85.6%,
-		74% 81.67%,
-		76% 76.65%,
-		78% 71.17%,
-		80% 65.9%,
-		82% 61.49%,
-		84% 58.47%,
-		86% 57.21%,
-		88% 57.88%,
-		90% 60.38%,
-		92% 64.42%,
-		94% 69.49%,
-		96% 74.97%,
-		98% 80.2%,
-		100% 84.53%
-	);
-}
+} */
 
 .custom-gradient {
 	background: linear-gradient(135deg, #636bca 0%, #e69bdf 55%, #f9bef4 100%);
 }
 
 p {
-	/* font-size: 20px;
-	line-height: 1.6; */
-@apply text-lg lg:text-xl;
+	@apply text-lg lg:text-xl leading-[1.6];
+}
+
+.wrapper {
+	@apply w-full max-w-screen-2xl px-4! lg:px-10! py-8 lg:py-16;
 }
 
 @layer base {
 	* {
 		@apply font-open-sans;
 	}
-	/* body {
-		@apply bg-background text-foreground;
-		pointer-events: auto !important;
-	} */
+
 	.svg-logo {
 		fill: '#999999';
 	}

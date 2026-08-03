@@ -29,8 +29,9 @@ const currentPath = Astro.url.pathname
 				isHeader
 				lang={lang}
 			/>
-			<MobileNav isMain={isMain} currentPath={currentPath} lang={lang} />
-			<div class='h-8'>
+
+			<div class='flex gap-4 h-6'>
+				<MobileNav isMain={isMain} currentPath={currentPath} lang={lang} />
 				<LanguageNav currentPath={currentPath} isMain={isMain} lang={lang} />
 			</div>
 		</div>
