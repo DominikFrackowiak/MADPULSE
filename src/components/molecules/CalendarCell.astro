@@ -5,28 +5,55 @@ interface Props {
 	hours: string
 	day: string
 	desktopOrder: number
+	url?: string | null
+	lang: 'es' | 'en'
 }
 
-const { title, teacher, hours, day, desktopOrder } = Astro.props
+const { title, teacher, hours, day, desktopOrder, url, lang } = Astro.props
+const hasUrl = typeof url === 'string' && url.trim().length > 0
+const href = hasUrl ? `/${lang}/${url.replace(/^\/+/, '')}` : undefined
 ---
-
-<div
-	class='calendar-cell flex flex-col justify-between gap-3 items-start border-t-4 border-l-4 border-custom-accent-200 text-custom-accent-200 p-8 font-newake font-semibold'
+<>
+{hasUrl?<a
+	href={href}
+	class='calendar-cell flex flex-col justify-between gap-3 items-center border-t-2 border-l-2 border-custom-accent-200 text-custom-accent-200 p-8 font-newake font-normal'
 	style={`--desktop-order: ${desktopOrder}`}
 >
 	<div class='flex flex-col gap-1'>
-		<span class='block lg:hidden text-xl font-newake'>{day}</span>
-		<span class='text-xl font-newake'>{hours}</span>
+		<span class='block lg:hidden text-xl font-newake text-center'>{day}</span>
+		<span class='text-xl font-newake text-center'>{hours}</span>
 	</div>
 	<div class='flex flex-col gap-1'>
-		<span class='text-4xl font-bold font-newake'>{title}</span>
+		<span class='text-2xl font-medium font-newake text-center'>{title}</span>
 		{
 			teacher ? (
-				<span class='text-2xl font-bold font-newake'>{teacher}</span>
+				<span class='text-2xl font-regular font-newake text-center'>
+					{teacher}
+				</span>
 			) : null
 		}
 	</div>
-</div>
+</a>:<div
+	
+	class='calendar-cell flex flex-col justify-between gap-3 items-center border-t-2 border-l-2 border-custom-accent-200 text-custom-accent-200 p-8 font-newake font-normal'
+	style={`--desktop-order: ${desktopOrder}`}
+>
+	<div class='flex flex-col gap-1'>
+		<span class='block lg:hidden text-xl font-newake text-center'>{day}</span>
+		<span class='text-xl font-newake text-center'>{hours}</span>
+	</div>
+	<div class='flex flex-col gap-1'>
+		<span class='text-2xl font-medium font-newake text-center'>{title}</span>
+		{
+			teacher ? (
+				<span class='text-2xl font-regular font-newake text-center'>
+					{teacher}
+				</span>
+			) : null
+		}
+	</div>
+</div>}
+</>
 
 <style>
 	@media (min-width: 1024px) {

@@ -1,5 +1,6 @@
 ---
 import CalendarCell from '@/components/molecules/CalendarCell.astro'
+import Heading from '../atoms/Heading.astro'
 import { days, workshops } from '../../../constants/constants'
 import { getLangFromUrl, useTranslations } from '../../i18n/utils'
 
@@ -10,14 +11,15 @@ const mobileWorkshops = days.flatMap(day =>
 )
 ---
 
+<Heading heading={t('schedule.title')} customClass='lg:py-8' />
 <section
-	class='flex justify-center items-center w-full! min-h-[40vh] py-16 custom-gradient'
+	class='flex flex-col justify-center items-center w-full! min-h-[40vh] py-8 custom-gradient'
 >
-	<div class='w-full max-w-screen-2xl p-8 rounded'>
+	<div class='wrapper'>
 		<div class='hidden lg:grid grid-cols-1 lg:grid-cols-3'>
 			{
 				days.map(day => (
-					<h3 class='flex justify-center items-center pb-8 font-newake font-bold text-2xl text-custom-accent-200'>
+					<h3 class='flex justify-center items-center pb-8 font-newake font-semibold text-xl text-custom-accent-200'>
 						{t(day)}
 					</h3>
 				))
@@ -25,7 +27,7 @@ const mobileWorkshops = days.flatMap(day =>
 		</div>
 
 		<div
-			class='grid grid-cols-1 lg:grid-cols-3 border-r-4 border-b-4 border-custom-accent-200'
+			class='grid grid-cols-1 lg:grid-cols-3 border-r-2 border-b-2 border-custom-accent-200'
 		>
 			{
 				mobileWorkshops.map(workshop => (
@@ -35,6 +37,8 @@ const mobileWorkshops = days.flatMap(day =>
 						hours={t(workshop.hours)}
 						day={t(workshop.day)}
 						desktopOrder={workshops.indexOf(workshop) + 1}
+						url={workshop.url}
+						lang={lang}
 					/>
 				))
 			}

@@ -1,6 +1,8 @@
 ---
+import { cn } from 'utils/twMerge'
 import Layout from '../../../layouts/Layout.astro'
 import Heading from '@/components/atoms/Heading.astro'
+import { Image } from 'astro:assets'
 
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils'
 import QuoteWithText from '@/components/molecules/QuoteWithText.astro'
@@ -12,25 +14,35 @@ export async function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
+
+// style={`background-image: url('/images/program-background.jpg')`}
 ---
 
 <Layout title={t('schedule.title')}>
-	<div
-		class='w-full flex flex-col items-center centerElement verticalDistance gap-16 '
-	>
-		<!-- <StrokeTitle text={t('schedule.title')} /> -->
-
+	<div class='w-full flex flex-col items-center gap-8'>
+		<div
+			class={cn(
+				'relative flex justify-center w-full lg:max-h-[500px] self-stretch bg-cover bg-no-repeat shadow-md -mt-8 z-1 bg-center'
+				// teacher.bgPosition
+			)}
+			style={`background-image: url('/images/program-background.webp')`}
+		>
+			<div
+				class='absolute top-0 left-0 bottom-0 right-0 bg-custom-accent-200/65 z-2'
+			>
+			</div>
+			<div
+				class='flex flex-col justify-center items-start w-full min-h-[500px] max-w-screen-2xl mb-8 lg:mb-16 px-4! lg:px-10!'
+			>
+				<Heading
+					heading={t('schedule.welcome')}
+					customClass={cn(
+						'items-start  text-white z-3 text-4xl lg:text-7-4-5xl! uppercase'
+					)}
+				/>
+			</div>
+		</div>
 		<QuoteWithText text={'main.quote'} />
-		<!-- <div class='schedule-container'>
-			<img
-				src={lang === 'es'
-					? '/images/schedule_es.png'
-					: '/images/schedule_en.webp'}
-				alt='schedule'
-				class='schedule-image rounded-3xl shadow-md'
-			/>
-		</div> -->
-		<Heading heading='schedule.title' />
 		<Calendar />
 	</div>
 </Layout>
