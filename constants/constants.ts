@@ -1,3 +1,10 @@
+import carmenImage from '../src/assets/teachers/carmen-cropped.webp'
+import cataImage from '../src/assets/teachers/cata-cropped.webp'
+import jesusImage from '../src/assets/teachers/jesus-cropped.webp'
+import luciaImage from '../src/assets/teachers/lucia-cropped.webp'
+import martaImage from '../src/assets/teachers/marta-cropped.webp'
+import sergioImage from '../src/assets/teachers/sergio-cropped.webp'
+
 export const navItems = [
 
 	{
@@ -113,10 +120,9 @@ export const teacherPages = [
 		quote: 'teachers.carmen-alcalde.quote',
 		description1: 'teachers.carmen-alcalde.text1',
 		description2: 'teachers.carmen-alcalde.text2',
-		imageSrc: '/images/teachers/carmen-cropped.webp',
+		imageSrc: carmenImage,
 		isImageToTheLeft: true,
-		bgPosition: 'bg-top',
-		// bgPosition: 'bg-[position:-240px_10%] sm:bg-[position:82%_30%]',
+		imagePosition: 'object-top',
 		biographySectionWidth: 'lg:w-[56%]',
 		workshopSectionWidth: 'lg:w-[40%]',
 	},
@@ -127,9 +133,9 @@ export const teacherPages = [
 		quote: 'teachers.lucia-sanchez.quote',
 		description1: 'teachers.lucia-sanchez.text1',
 		description2: 'teachers.lucia-sanchez.text2',
-		imageSrc: '/images/teachers/lucia-cropped.webp',
+		imageSrc: luciaImage,
 		isImageToTheLeft: false,
-		bgPosition: 'bg-top',
+		imagePosition: 'object-top',
 		biographySectionWidth: 'lg:w-[40%]',
 		workshopSectionWidth: 'lg:w-[56%]',
 	},
@@ -140,10 +146,9 @@ export const teacherPages = [
 		quote: 'teachers.sergio-palomares-cicente.quote',
 		description1: 'teachers.sergio-palomares-vicente.text1',
 		description2: 'teachers.sergio-palomares-vicente.text2',
-		imageSrc: '/images/teachers/sergio-cropped.webp',
+		imageSrc: sergioImage,
 		isImageToTheLeft: true,
-		bgPosition: 'bg-top',
-		// bgPosition: 'bg-[position:-300px_40%] md:bg-[position:30%_40%]',
+		imagePosition: 'object-top',
 		biographySectionWidth: 'lg:w-[40%]',
 		workshopSectionWidth: 'lg:w-[56%]',
 	},
@@ -154,10 +159,9 @@ export const teacherPages = [
 		quote: 'teachers.marta-wrzesinska.quote',
 		description1: 'teachers.marta-wrzesinska.text1',
 		description2: 'teachers.marta-wrzesinska.text2',
-		imageSrc: '/images/teachers/marta-cropped.webp',
+		imageSrc: martaImage,
 		isImageToTheLeft: false,
-		// bgPosition: 'bg-[position:20%_40%] lg:bg-[position:center_center]',
-		bgPosition: 'center',
+		imagePosition: 'object-[10%_center] lg:object-center',
 		biographySectionWidth: 'lg:w-[43%]',
 		workshopSectionWidth: 'lg:w-[53%]',
 	},
@@ -168,10 +172,9 @@ export const teacherPages = [
 		quote: 'teachers.catalina-mahecha.quote',
 		description1: 'teachers.catalina-mahecha.text1',
 		description2: 'teachers.catalina-mahecha.text2',
-		imageSrc: '/images/teachers/cata-cropped.webp',
+		imageSrc: cataImage,
 		isImageToTheLeft: false,
-		// bgPosition: 'bg-[position:48%_40%] lg:bg-[position:center_2%]',
-		bgPosition: 'center',
+		imagePosition: 'object-top',
 		biographySectionWidth: 'lg:w-[43%]',
 		workshopSectionWidth: 'lg:w-[53%]',
 	}, {
@@ -181,10 +184,9 @@ export const teacherPages = [
 		quote: 'teachers.jesus-alonso.quote',
 		description1: 'teachers.jesus-alonso.text1',
 		description2: 'teachers.jesus-alonso.text2',
-		imageSrc: '/images/teachers/jesus-cropped.webp',
+		imageSrc: jesusImage,
 		isImageToTheLeft: false,
-		// bgPosition: 'bg-[position:65%_40%] lg:bg-[position:center_-200px]',
-		bgPosition: 'bg-bottom-left lg:bg-top',
+		imagePosition: 'object-[center_center] lg:object-center',
 		biographySectionWidth: 'lg:w-[43%]',
 		workshopSectionWidth: 'lg:w-[53%]',
 	},

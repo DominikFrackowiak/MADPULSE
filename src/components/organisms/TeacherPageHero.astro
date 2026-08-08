@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets'
 import { cn } from 'utils/twMerge'
 import Heading from '../atoms/Heading.astro'
 import type { teacherPages } from '../../../constants/constants'
@@ -14,19 +15,26 @@ const { teacher, teacherTitle } = Astro.props
 
 <div
 	class={cn(
-		'relative flex justify-center w-fullmax-h-[500px] self-stretch bg-cover bg-no-repeat shadow-md -mt-8 z-1',
-		teacher.bgPosition
+		'relative flex justify-center w-full max-h-[550px] self-stretch overflow-hidden shadow-md -mt-8 z-1'
 	)}
-	style={`background-image: url('${teacher.imageSrc}')`}
 >
+	<Image
+		src={teacher.imageSrc}
+		alt={teacher.name}
+		class={cn(
+			'absolute inset-0 z-0 h-full w-full object-cover',
+			teacher.imagePosition
+		)}
+		loading='eager'
+	/>
 	<div
-		class='absolute top-0 left-0 bottom-0 right-0 bg-custom-accent-200/65 z-2'
+		class='absolute top-0 left-0 bottom-0 right-0 bg-custom-accent-200/50 z-2'
 	>
 	</div>
+	<div class='absolute inset-0 custom-gradient-hero opacity-10 z-3'></div>
 	<div
-		class='flex flex-col justify-center items-start w-full min-h-[500px] max-w-screen-2xl mb-8 lg:mb-16 px-4! lg:px-10!'
+		class='relative z-4 flex flex-col justify-center items-start w-full min-h-[550px] max-w-screen-2xl mb-8 lg:mb-16 px-4! lg:px-10!'
 	>
-		<!-- <div class='flex flex-col'> -->
 		<Heading
 			heading={teacher.name}
 			customClass={cn(
@@ -38,7 +46,7 @@ const { teacher, teacherTitle } = Astro.props
 		<Heading
 			heading={teacherTitle}
 			customClass={cn(
-				'self-start items-start text-custom-accent z-3 text-3xl lg:text-4-5xl! bg-custom  uppercase',
+				'self-start items-start text-white z-3 text-3xl lg:text-4-5xl! bg-custom  uppercase',
 				teacher.isImageToTheLeft
 					? 'self-start lg:max-w-1/2!'
 					: 'self-start  lg:max-w-1/2! lg:self-end! lg:text-right'

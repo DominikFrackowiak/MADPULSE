@@ -14,13 +14,14 @@ export async function getStaticPaths() {
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
-
+import scheduleEs from '../../../assets/schedule/schedule_es.webp'
+import scheduleEn from '../../../assets/schedule/schedule_en.webp'
 // style={`background-image: url('/images/program-background.jpg')`}
 ---
 
 <Layout title={t('schedule.title')}>
-	<div class='w-full flex flex-col items-center gap-8'>
-		<div
+	<!-- <div class='w-full flex flex-col items-center gap-8'> -->
+	<!-- <div
 			class={cn(
 				'relative flex justify-center w-full max-h-[500px] self-stretch bg-cover bg-no-repeat shadow-md -mt-8 z-1 bg-center'
 				// teacher.bgPosition
@@ -41,10 +42,15 @@ const t = useTranslations(lang)
 					)}
 				/>
 			</div>
-		</div>
-		<QuoteWithText text={'main.quote'} className='-mt-8' />
-		<Calendar />
-	</div>
+		</div> -->
+	<QuoteWithText text={'main.quote'} className='-mt-8' />
+	<!-- <Calendar /> -->
+	<Image
+		src={lang === 'es' ? scheduleEs : scheduleEn}
+		alt='calendar'
+		class='wrapper'
+	/>
+	<!-- </div> -->
 </Layout>
 
 <style>
