@@ -38,7 +38,7 @@ const { teacher, teacherTitle } = Astro.props
 		<Heading
 			heading={teacher.name}
 			customClass={cn(
-				'items-start  text-white z-3 text-4xl lg:text-7-4-5xl! uppercase',
+				'items-start  text-white z-3 text-4xl lg:text-7-4-5xl! uppercase text-center lg:text-left w-full',
 				teacher.isImageToTheLeft ? 'self-start' : 'self-start lg:self-end'
 			)}
 		/>
@@ -46,7 +46,7 @@ const { teacher, teacherTitle } = Astro.props
 		<Heading
 			heading={teacherTitle}
 			customClass={cn(
-				'self-start items-start text-white z-3 text-3xl lg:text-4-5xl! bg-custom  uppercase',
+				'self-start items-start text-white z-3 text-3xl lg:text-4-5xl! bg-custom  uppercase text-center lg:text-left w-full',
 				teacher.isImageToTheLeft
 					? 'self-start lg:max-w-1/2!'
 					: 'self-start  lg:max-w-1/2! lg:self-end! lg:text-right'
