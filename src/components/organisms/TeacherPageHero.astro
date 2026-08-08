@@ -39,7 +39,9 @@ const { teacher, teacherTitle } = Astro.props
 			heading={teacher.name}
 			customClass={cn(
 				'items-start  text-white z-3 text-4xl lg:text-7-4-5xl! uppercase text-center lg:text-left w-full',
-				teacher.isImageToTheLeft ? 'self-start' : 'self-start lg:self-end'
+				teacher.isImageToTheLeft
+					? 'self-start'
+					: 'self-start lg:self-end lg:text-right'
 			)}
 		/>
 
