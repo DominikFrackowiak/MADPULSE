@@ -1,6 +1,8 @@
 ---
 import Heading from '../atoms/Heading.astro'
 import CloseIcon from '../atoms/CloseIcon.astro'
+import ChevronLeftIcon from '../atoms/ChevronLeftIcon.astro'
+import ChevronRightIcon from '../atoms/ChevronRightIcon.astro'
 import { Image } from 'astro:assets'
 import type { galleryYears } from '../../../constants/gallery'
 
@@ -48,34 +50,85 @@ const { gallery } = Astro.props
 		>
 			<CloseIcon className='h-6 w-6' />
 		</button>
+		<button
+			type='button'
+			aria-label='Show previous image'
+			class='previous-image cursor-pointer absolute left-4 lg:left-8 top-1/2 z-1 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-custom-accent shadow-sm'
+		>
+			<ChevronLeftIcon className='h-8 w-8' />
+		</button>
 		<img src='' alt='' class='mt-40 lg:mt-0 single-image max-h-[95vh] w-auto' />
+		<button
+			type='button'
+			aria-label='Show next image'
+			class='next-image cursor-pointer absolute right-4 lg:right-8 top-1/2 z-1 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-custom-accent shadow-sm'
+		>
+			<ChevronRightIcon className='h-8 w-8' />
+		</button>
 	</div>
 </article>
 
 <script>
 	const setupGalleryPreview = () => {
 		const imgWrapper = document.querySelector<HTMLDivElement>('.image-wrapper')
-		const images = document.querySelectorAll<HTMLImageElement>('.gallery-img')
+		const images = Array.from(
+			document.querySelectorAll<HTMLImageElement>('.gallery-img')
+		)
 		const singleImage =
 			document.querySelector<HTMLImageElement>('.single-image')
+		const previousImage =
+			document.querySelector<HTMLButtonElement>('.previous-image')
+		const nextImage = document.querySelector<HTMLButtonElement>('.next-image')
 
 		if (!imgWrapper || !singleImage) return
 
-		images.forEach(image => {
+		let currentImageIndex = 0
+
+		const isPreviewOpen = () => imgWrapper.classList.contains('flex')
+
+		const showImage = (index: number) => {
+			const image = images[index]
+			const fullSrc = image?.dataset.fullSrc
+
+			if (!image || !fullSrc) return
+
+			currentImageIndex = index
+			singleImage.src = fullSrc
+			singleImage.alt = image.alt
+		}
+
+		const openPreview = (index: number) => {
+			showImage(index)
+			imgWrapper.classList.remove('hidden')
+			imgWrapper.classList.add('flex')
+		}
+
+		const closePreview = () => {
+			imgWrapper.classList.remove('flex')
+			imgWrapper.classList.add('hidden')
+		}
+
+		const showPreviousImage = () => {
+			const previousIndex =
+				(currentImageIndex - 1 + images.length) % images.length
+
+			showImage(previousIndex)
+		}
+
+		const showNextImage = () => {
+			const nextIndex = (currentImageIndex + 1) % images.length
+
+			showImage(nextIndex)
+		}
+
+		images.forEach((image, index) => {
 			if (image.dataset.galleryPreviewBound === 'true') return
 
 			image.dataset.galleryPreviewBound = 'true'
 			image.addEventListener(
 				'click',
 				() => {
-					const fullSrc = image.dataset.fullSrc
-
-					if (!fullSrc) return
-
-					singleImage.src = fullSrc
-					singleImage.alt = image.alt
-					imgWrapper.classList.remove('hidden')
-					imgWrapper.classList.add('flex')
+					openPreview(index)
 				},
 				{ once: false }
 			)
@@ -85,8 +138,39 @@ const { gallery } = Astro.props
 
 		imgWrapper.dataset.galleryPreviewBound = 'true'
 		imgWrapper.addEventListener('click', () => {
-			imgWrapper.classList.remove('flex')
-			imgWrapper.classList.add('hidden')
+			closePreview()
+		})
+
+		;[singleImage, previousImage, nextImage].forEach(element => {
+			element?.addEventListener('click', event => {
+				event.stopPropagation()
+			})
+		})
+
+		previousImage?.addEventListener('click', () => {
+			showPreviousImage()
+		})
+
+		nextImage?.addEventListener('click', () => {
+			showNextImage()
+		})
+
+		document.addEventListener('keydown', event => {
+			if (!isPreviewOpen()) return
+
+			if (event.key === 'ArrowLeft') {
+				event.preventDefault()
+				showPreviousImage()
+			}
+
+			if (event.key === 'ArrowRight') {
+				event.preventDefault()
+				showNextImage()
+			}
+
+			if (event.key === 'Escape') {
+				closePreview()
+			}
 		})
 	}
 
